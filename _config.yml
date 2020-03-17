@@ -95,13 +95,13 @@ analytics:
 author:
   name             : "Kiyeon Kim"
   avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "1이=2% : 1년=1377%"
+  bio              : "하루 = 2%\n일년 = 1377%"
   location         : "Republic of Korea"
   email            : "giyeon15@gmail.com"
   links:
     - label: "Email"
       icon: "fas fa-fw fa-envelope-square"
-      url: mailto:giyeon15@gmail.com
+      #url: mailto:giyeon15@gmail.com
     - label: "Website"
       icon: "fas fa-fw fa-link"
       # url: "https://your-website.com"
