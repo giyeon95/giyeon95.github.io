@@ -10,8 +10,8 @@ WEB서버, WAS서버의 개념과 용도가 헷갈려서 개인공부겸 정리�
 밑에 참조한 글을 보시면 더욱 쉽게 이해하실 수 있습니다.
 
 ## WEB Server
-  
-  **********정적(static)* 컨텐츠를 제공하는 프로그램 (html, css ..)
+
+*정적(static)* 컨텐츠를 제공하는 프로그램 (html, css ..)
 
 * WEB의 예 : Apache, MS IIS, NGINX ..
 
