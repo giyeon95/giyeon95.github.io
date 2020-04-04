@@ -4,8 +4,8 @@ main:
   #  url: /about/
   #- title: "Study"
   #  url: /study/
-  - title: "Category"
-    url: /categories/
+  #- title: "Category"
+  #  url: /categories/
   - title: "External"
     url: http://giyeonpf.com
 
