@@ -6,6 +6,8 @@ main:
     url: /study/
   - title: "Projects"
     url: /projects/
+  - title: "Student WebSite"
+    url: http://giyeonpf.com
 
   # - title: "About"
   #   url: https://mmistakes.github.io/minimal-mistakes/about/
