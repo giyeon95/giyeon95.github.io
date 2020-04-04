@@ -16,9 +16,9 @@ minimal_mistakes_skin    : "default" # "air", "aqua", "contrast", "dark", "dirt"
 
 # Site Settings
 locale                   : "en-US"
-title                    : "하루에 2%씩 나아가기"
+title                    : "KY Development Journey"
 title_separator          : "-"
-subtitle                 : # site tagline that appears below site title in masthead
+subtitle                 : "If you grow up one day 2%, You will grow up 1377% each year"
 name                     : "Kiyeon Kim"
 description              : "An amazing website."
 url                      : "https://giyeon95.github.io"
@@ -94,8 +94,8 @@ analytics:
 # Site Author
 author:
   name             : "Kiyeon Kim"
-  avatar           : # path of avatar image, e.g. "/assets/images/bio-photo.jpg"
-  bio              : "1일= 2%, 1년 = 1377%"
+  avatar           : "/assets/images/profile_image.jpg"
+  bio              : "Java, Spring Boot, JPA, MSA, Clean Code, Design Pattern"
   location         : "Republic of Korea"
   email            : "giyeon15@gmail.com"
   links:
