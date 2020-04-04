@@ -1,12 +1,12 @@
 # main links
 main:
-  - title: "About"
-    url: /about/
-  - title: "Study"
-    url: /study/
-  - title: "Projects"
-    url: /projects/
-  - title: "Web"
+  #  - title: "About"
+  #  url: /about/
+  #- title: "Study"
+  #  url: /study/
+  - title: "Category"
+    url: /categories/
+  - title: "External"
     url: http://giyeonpf.com
 
   # - title: "About"
