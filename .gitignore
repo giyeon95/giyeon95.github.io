@@ -1,2 +1,11 @@
+.editorconfig
+.gitattributes
+.github
+/docs
+/test
+CHANGELOG.md
+minimal-mistakes-jekyll.gemspec
+screenshot-layouts.png
+screenshot.png
 .DS_Store
 _posts/.idea
