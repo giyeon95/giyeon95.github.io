@@ -4,6 +4,14 @@ layout: archive
 
 {{ content }}
 
+
+{ % if page.comments %}
+<div id="post-utterances" class="container">
+{ % include utterances.html %}
+</div>
+{ % endif %}
+
+
 <ul class="taxonomy__index">
   {% assign postsInYear = site.posts | group_by_exp: 'post', 'post.date | date: "%Y"' %}
   {% for year in postsInYear %}
