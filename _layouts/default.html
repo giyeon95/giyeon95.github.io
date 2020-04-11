@@ -19,15 +19,21 @@
     {% include_cached browser-upgrade.html %}
     {% include_cached masthead.html %}
 
-    <div class="initial-content">
-      {{ content }}
-    </div>
+		<div class="initial-content">
+			{{ content }}
+		</div>
 
-    {% if site.search == true %}
-      <div class="search-content">
-        {% include_cached search/search_form.html %}
-      </div>
-    {% endif %}
+		{% if site.search == true %}
+		<div class="search-content">
+			{% include_cached search/search_form.html %}
+		</div>
+		{% endif %}
+
+		{ % if page.comments %}
+		<div id="post-utterances" class="container">
+			{ % include utterances.html %}
+		</div>
+		{ % endif %}
 
     <div id="footer" class="page__footer">
       <footer>
