@@ -29,11 +29,11 @@
 		</div>
 		{% endif %}
 
-		{ % if page.comments %}
-		<div id="post-utterances" class="container">
-			{ % include utterances.html %}
+		{% if page.comments %}
+		<div id="comments" class="container">
+			{% include comment-providers/utterances.html %}
 		</div>
-		{ % endif %}
+		{% endif %}
 
     <div id="footer" class="page__footer">
       <footer>
