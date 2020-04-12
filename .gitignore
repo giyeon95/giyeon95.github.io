@@ -1,6 +1,7 @@
 .editorconfig
 .gitattributes
 .github
+.idea
 /docs
 /test
 CHANGELOG.md
