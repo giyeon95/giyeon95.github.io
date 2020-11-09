@@ -62,8 +62,6 @@ categories: whiteship
 javac 14.0.2
 ```
 
-![jdk 설치 확인](./img/whiteship/jdk_check_terminal.png)
-
 **1. java file 만들기**
 
 ```java
@@ -74,11 +72,8 @@ class Main {
 }
 ```
 
-![java file 만들기](./img/whiteship/java_init.png)
-
-
 **2. java 파일 저장 및 byte code 변환**
-
+itermiterm
 ```bash
     javac [file-name].java
 ```
