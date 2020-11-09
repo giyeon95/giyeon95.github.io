@@ -57,7 +57,7 @@ categories: whiteship
 - 사전준비: JDK (JRE + java compiler) [Download](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html)
 - 설치 확인 방법 (mac OS)
 
-```shell script
+```bash
 ❯ javac -version
 javac 14.0.2
 ```
