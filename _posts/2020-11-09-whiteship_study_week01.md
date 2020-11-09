@@ -14,53 +14,58 @@ categories: whiteship
 
 
 ## JVM 이란 무엇인가?
- #### 정의
+
+**정의**
 - JVM(Java Virtual Machine)의 줄임말로, JAVA가 OS에 구애받지 않고 재사용을 가능하게 해주는 소프트웨어 구현체
 
- #### 역할
+**역할**
 1. OS에 구애받지 않고 JAVA가 동작 할 수 있게 해준다.
-    ```text 
-            ------------------------------
-            |                            |
-            |          Program           |
-            |                            |
-            ------------------------------
-                           |
-            ------------------------------
-            |                            |
-            |            JVM             | # JVM이 중간에서 Program과 OS의 중재자 역할
-            |                            | # JVM이 없다면? Program은 OS에 의존적
-            ------------------------------
-                           |
-            ------------------------------
-            |                            |
-            |      Operating System      | 
-            |                            |
-            ------------------------------
-                           |
-            ------------------------------
-            |                            |
-            |          Hardware          |
-            |                            |
-            ------------------------------
-      ```
+
+```text 
+    ------------------------------
+    |                            |
+    |          Program           |
+    |                            |
+    ------------------------------
+                   |
+    ------------------------------
+    |                            |
+    |            JVM             | # JVM이 중간에서 Program과 OS의 중재자 역할
+    |                            | # JVM이 없다면? Program은 OS에 의존적
+    ------------------------------
+                   |
+    ------------------------------
+    |                            |
+    |      Operating System      | 
+    |                            |
+    ------------------------------
+                   |
+    ------------------------------
+    |                            |
+    |          Hardware          |
+    |                            |
+    ------------------------------
+```
 2.  메모리 관리 & Garbage collection (GC)
-    ```text
-    - OS 레벨에서의 memory leak 방지
-    - 프로그램이 동적으로 할당했던 메모리 영역 중 필요 없게 된 영역을 해지하는 기능
-    ```
+   
+```text
+- OS 레벨에서의 memory leak 방지
+- 프로그램이 동적으로 할당했던 메모리 영역 중 필요 없게 된 영역을 해지하는 기능
+```
     
 ## 컴파일 하는 방법
 - 사전준비: JDK (JRE + java compiler) [Download](https://www.oracle.com/java/technologies/javase-jdk15-downloads.html)
 - 설치 확인 방법 (mac OS)
 
 ```shell script
-    ❯ javac -version
-    javac 14.0.2
+❯ javac -version
+javac 14.0.2
 ```
+
 <img src="./img/whiteship/jdk_check_terminal.png">
 
 **1. java file 만들기**
+
 ```java
 class Main {
     public static void main(String[] args){
@@ -68,15 +73,18 @@ class Main {
     }
 }
 ```
+
 <img src="./img/whiteship/java_init.png">
 
 
 **2. java 파일 저장 및 byte code 변환**
+
 ```shell script
     javac [file-name].java
 ```
 
 **3. java 실행**
+
 ```shell script
     java [class-name]
 
@@ -85,6 +93,8 @@ class Main {
 ```
 
  
+
+    
 
 
 
