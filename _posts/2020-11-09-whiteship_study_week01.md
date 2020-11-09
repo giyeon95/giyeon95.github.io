@@ -62,7 +62,7 @@ categories: whiteship
 javac 14.0.2
 ```
 
-<img src="./img/whiteship/jdk_check_terminal.png">
+![jdk 설치 확인](./img/whiteship/jdk_check_terminal.png)
 
 **1. java file 만들기**
 
@@ -74,27 +74,23 @@ class Main {
 }
 ```
 
-<img src="./img/whiteship/java_init.png">
+![java file 만들기](./img/whiteship/java_init.png)
 
 
 **2. java 파일 저장 및 byte code 변환**
 
-```shell script
+```bash
     javac [file-name].java
 ```
 
 **3. java 실행**
 
-```shell script
+```bash
     java [class-name]
 
 # file-name이 아닌, class 이름으로 저장됨
 # 확장자 .class 는 실행할때 붙혀주지 말것 (30분 삽질함..)
 ```
-
- 
-
-    
 
 
 
