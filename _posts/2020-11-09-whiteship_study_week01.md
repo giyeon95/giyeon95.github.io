@@ -39,10 +39,8 @@ categories: whiteship
     ```
    
 2. Garbage collection(GC)의 메모리 관리
-    ```text
     - OS 레벨에서의 memory leak 방지
     - 프로그램이 동적으로 할당했던 메모리 영역 중 필요 없게 된 영역을 해지하는 기능
-    ```
     
 ## 컴파일 & 실행 하는 방법
 1. java 소스(.java)를 Javac로 빌드하면, javac는 bytecode(.class)파일을 생성한다.
