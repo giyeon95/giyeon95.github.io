@@ -93,7 +93,7 @@ class WrapperClassTest {
  - 문자형 리터럴
     * '', '\u[unicode값]'
     
-<img src="/assets/images/whiteship_java_2.1.png"></img>
+<img src="/assets/images/whiteship_java_2.1.png">
 
 -- 추가 작성 예정
 
