@@ -67,7 +67,7 @@ class WrapperClassTest {
      
  *Autoboxing and unboxing are introduced in Java 1.5 to automatically convert the primitive type into boxed primitive( Object or Wrapper class). ... With the introduction of autoboxing and unboxing in Java, this primitive to object conversion happens automatically by Java compiler which makes the code more readable.*
  
-[Ref: What is Autoboxing and Unboxing in Java](https://javarevisited.blogspot.com/2012/07/auto-boxing-and-unboxing-in-java-be.html#axzz6dxWlCrdt)
+[참고: What is Autoboxing and Unboxing in Java](https://javarevisited.blogspot.com/2012/07/auto-boxing-and-unboxing-in-java-be.html#axzz6dxWlCrdt)
 
 
 ## 리터럴(Literal)이란?
@@ -95,8 +95,69 @@ class WrapperClassTest {
     
 <img src="/assets/images/whiteship_java_2.1.png">
 
--- 추가 작성 예정
+[참고: 상수(Constant)와 리터럴(literal)이란?](https://mommoo.tistory.com/14)
+## 변수 선언 방법
 
-### References
-> [상수(Constant)와 리터럴(literal)이란?](https://mommoo.tistory.com/14)
-> 
+```java
+public class Main {
+    
+    int a; // 0 으로 초기화
+    String b; // null
+
+    public static void main(String[] args){
+        System.out.println(a); // 0
+    }
+}
+```
+
+## 변수의 스코프와 라이프 타임
+[변수 종류]
+ - 지역 변수: 선언한 Method 안에서만 사용된다. Method가 끝나면 해당 변수도 역할을 다하고 사라진다.
+    * 함수 실행 시간동안만 유지
+ - 전역 변수: 클래스에 선언되는 변수를 의미하며 객체 변수와 클래스 변수(static)으로 나뉘어진다.
+    * 객체 변수: 객체를 사용하는 동안에는 변수가 유지된다.
+    * 클래스 변수: 객체의 생성과 관계없이, 클래스가 로딩되는 시점부터 프로그램이 종료되기 전까지 쭉 유지된다.
+
+## 타입 변환, 캐스팅 그리고 타입 프로모션
+ 변수나 리터럴 타입을 다른 타입으로 변환하는것을 타입 변환이라 한다.
+ 타입 변환에는 자동 형변환과, 강제 형변환으로 나뉘어 진다.
+ 
+###### 자동 형변환(Promotion)
+자동 형변환은 작은 메모리 크기의 데이터 타입을 큰 메모리 크기의 데이터 타입으로 변환하는 행위
+```java
+int a = 100; 
+double b = a; // 자동 형변환 int(4) -> double(8)
+```
+
+###### 강제 형변환(Casting)
+자동 형변환의 조건을 갖추지 못했을때, 형변환을 명시적으로 지정해서 할 수 있는 방법이다.
+```java
+int intVal = 1;
+byte byteVal = intVal; // 컴파일 에러 발생
+```
+위 코드가 컴파일 에러가 발생하는 이유는, int(4byte)의 크기를 잡고 있는 변수를, byte(1byte)로 변환하려 했기 때문이다.
+그러나, 1의 값은 byte의 범위에 포함될 수 있으므로 변환하기 위해 아래와 같이 명시할 수 있다.
+```java
+int intVal = 1;
+byte byteVal = (byte)intVal;
+```
+
+단, byte(1byte)의 범위를 넘어서는 int value를 byte에 넣을시 전혀 다른 엉뚱한 값이 나올 수 있으므로 주의가 필요하다.
+
+[참고: 6. Java 데이터 타입 자동 형변환(Promotion)과 강제 형변환(Casting)](https://stage-loving-developers.tistory.com/8)
+
+
+## 1차 및 2차 배열 선언하기
+```java
+int[] array = new int[10]; // 1차원 배열 설정
+int[][] array = new int[10][10]; // 2차원 배열 선언
+```
+
+## 타입 추론, var
+타입 추론이 정적 타이핑을 지원하는 언어에서, 타입이 정해지지 않은 변수에 대해서 컴파일러가 변수의 타입을 스스로 찾아낼수 있도록 하는 기능
+java에서는 일반변수에 대한 타입추론은 var 문법을 9버전 이상에서 지원하며, *제네릭*과 *람다*에 대한 타입추론을 보통 지원한다.
+
+
+[참고: 자바 타입 추론에 대한 논의 (Type Inference for Java)](https://m.blog.naver.com/PostView.nhn?blogId=2feelus&logNo=220655685560&proxyReferer=https:%2F%2Fwww.google.com%2F)
+
+[참고: Java Lambda (2) 타입 추론과 함수형 인터페이스](https://futurecreator.github.io/2018/07/20/java-lambda-type-inference-functional-interface/)
