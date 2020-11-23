@@ -239,14 +239,51 @@ true
 4. Warrior 클래스는 Magician 클래스와 상속, 구현은 동일하나 실질적으로 다른 클래스 이기에 false를 반환한다.
 5. Player 클래스는 Magician의 부모 클래스 이기에 true를 반환한다.
 
+[참고: 자바/Java instanceof 연산자란?](https://arabiannight.tistory.com/313)
 
 ## assignment(=) operator
+assignment operator은 할당 연산자라고도 불리우며 수학과는 조금 의미가 다르다.
+수학에서는 값이 같다라고 표현하지만, 할당 연산자는 왼쪽값에 오른쪽 값을 넣는다 라는 의미를 가지고 있다.
+   * 프로그래밍에서 같다라는 의미는 관계연산자인 *==* 을 사용한다.
+```java
+int a= 5;
+int b = 3;
 
+a = b // a에 b값을 넣는다.
+``` 
 
 ## 화살표(->) 연산자
+화살표(->) 연산자는 람다식에서 사용되는 연산자이다.
 
+##### 람다식이란?
+ * 메서드를 하나의 식(expression)으로 표현한 것.
+ * 메서드의 이름과 반환값이 없이 메서드를 표현할 수 있으므로 익명함수라고도 불리운다.
+
+```java
+int sum(int a, int b) {
+    return a+b;
+}
+
+// 람다식
+(int a, int b) -> a + b;
+```
+
+```java
+// Fucntional Interface 
+BinaryOperator<Integer> sum = new BinaryOperator<Integer>() {
+        @Override
+        public Integer apply(Integer a, Integer b) {
+            return a+ b;
+        }
+    };
+
+// 람다식으로 변경
+BinaryOperator<Integer> sum = (a, b) -> a + b;
+```
+* 위와 같이 간단한 기능이라면 람다식을 이용하여 짧고 이쁘게(?) 작성할 수도 있다. (가독성은 좋아진다고 생각하는데, 사람들 의견마다 다른 것 같다.)
 
 ## 3항 연산자
+
 
 
 ## 연산자 우선 순위
