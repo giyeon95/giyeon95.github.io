@@ -33,9 +33,10 @@ WEB서버, WAS서버의 개념과 용도가 헷갈려서 개인공부겸 정리�
 Request : Client -> Web Server -> Was Server -> Database
 
 Response : Database -> Was Server -> Web Server -> Client
-
 ```
 
+내용 추가 [2020-11-24]
+ - 꼭 Web <-> WAS 서버를 통하지는 않아도 되지만 대게, 이렇게 되어있는 구조가 많은 것 같다.
 
 ## WEB과 WAS를 분리하는 이유는?
 1. 기능이나 역할 분리 및 로드벨런싱
@@ -45,7 +46,6 @@ Response : Database -> Was Server -> Web Server -> Client
 
 2. 장애 대응 및 처리에 유리(fail over, fail back)
    * WEB 서버와 WAS 서버가 독립적으로 분리됨으로서 WAS서버에서 나온 장애는 고객이 오류를 느끼지 못한채로 넘어갈 수 있다. (정상 동작하는 2중화 되어있는 WAS를 바라보면 됨)
-
 
 
 
