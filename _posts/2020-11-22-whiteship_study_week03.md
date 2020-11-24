@@ -280,22 +280,166 @@ BinaryOperator<Integer> sum = new BinaryOperator<Integer>() {
 // 람다식으로 변경
 BinaryOperator<Integer> sum = (a, b) -> a + b;
 ```
-* 위와 같이 간단한 기능이라면 람다식을 이용하여 짧고 이쁘게(?) 작성할 수도 있다. (가독성은 좋아진다고 생각하는데, 사람들 의견마다 다른 것 같다.)
+* 위와 같이 간단한 기능이라면 람다식을 이용하여 짧고 이쁘게(?) 작성할 수도 있다. (개인적으로 가독성은 좋아진다고 생각하는데, 사람들 의견마다 다른 것 같다.)
 
 ## 3항 연산자
+3항 연산자는 if else 구문을 간결하게 대체할 수 있는 연산자이다.
 
+```java
+// if문 사용
+String message;
+if(a > 0) {
+    message = "a는 양수입니다.";
+} else {
+    message = "a는 0또는 음수입니다.";
+}
 
+// 3항 연산자 사용
+String message = (a > 0) ? "a는 양수입니다." : "a는 0또는 음수입니다.";
+```
+문법: isTrue(boolean) ? true 일때 : false 일때;
+
+간단한 식같은 3항 연산자를 사용할 수 있으나, 가독성은 오히려 떨어진다고 생각이 든다.
 
 ## 연산자 우선 순위
+연산자 우선 순위는 다음과 같다.
 
+| 우선순위 | 종류 | 연산자 | 
+|:------:|:------:|:------:|
+|1 | 괄호/ 대괄호 연산자 | [], (), . |  
+|2 | 단항연산자 | !, ~, ++, -- |  
+|3 | 산술연산자 | *, /, %, +, - | 
+|4 | 비트단위 시프트 연산자 | <<, >>, >>> | 
+|5 | 관계 연산자 | <, <=, >, >=, ==, !=  |  
+|6 | 비트 연산자 | &, ^, &#124; |  
+|7 | 논리 연산자 | &&, &#124;&#124;,  | 
+|8 | 3항 연산자 | ?: |
+|9 | 대입 연산자 | =, +=, -=, *=, /=, %=, <<=, >>=, &=, ^=, ~= |
+
+[참고: 연산자우선순위](https://programmers.co.kr/learn/courses/5/lessons/116)
+[참고: 자바의 연산자 및 연산자 우선 순위](https://toma0912.tistory.com/66)
 
 ## (optional) Java 13. switch 연산자
+java13의 switch 연산자 이전에, 기존의 java switch 연산자 및 java 12에서 switch 연산자가 어떻게 바뀌었는지 확인하면 좋을 것 같다.
+먼저 java 11 이하의 버전에서의 switch연산자는 다음과 같다.
+* 단 java 12를 그냥 사용시에는 사용할 수 없고, --enable-preview 옵션을 추가해야 한다.
+```java
+private String numberToMessage(int number) {
+    String message = "";
+    switch(number) {
+        case 0:
+        case 1:
+        case 2:
+        case 3:
+            message = "zero or one or two or three";
+            break;
+        case 4:
+        case 5:
+            message = "four or five";
+            break;
+        case 6:
+            message = "six";
+            break;
+        default:
+            message = "Unknown";
+    }
+    
+    return message;
+}
+```
+
+java12 부터는 다음과 같은 특징들이 추가되었다.
+
+* Multiple case labels
+* Switch expression returning value via break (replaced with yield in Java 13 switch expressions)
+* Switch expression returning value via label rules (arrow)
+
+```java
+// Multiple case labels 특징을 이용하여 다음과 같이 바꿀 수 있다.
+private String numberToMessage(int number) {
+    String message = "";
+    switch(number) {
+        case 0, 1, 2, 3:
+            message = "zero or one or two or three";
+            break;
+        case 4, 5:
+            message = "four or five";
+            break;
+        case 6:
+            message = "six";
+            break;
+        default:
+            message = "Unknown";
+    }
+    
+    return message;
+}
 
 
+// Switch expression returning value via break 특징을 이용하여, 이렇게도 바꿀 수 있다.
+private String numberToMessage(int number) {
+    return switch(number) {
+            case 0, 1, 2, 3:
+                break "zero or one or two or three";
+        case 4, 5:
+            break "four or five";
+        case 6:
+            break "six";
+        default:
+            break "Unknown";
+    };
+}
+
+// Switch expression returning value via label rules 특징 까지 이용한다면, -> 연산자를 통해, 이렇게 바꿀 수 있다.
+private String numberToMessage(int number) {
+    return switch(number) {
+            case 0, 1, 2, 3: -> "zero or one or two or three";
+        case 4, 5: -> "four or five";
+        case 6: -> "six";
+        default -> "Unknown";
+    };
+}
+```
+[참고: Java 12 – Switch Expressions](https://mkyong.com/java/java-12-switch-expressions/)
 
 
+java 13에서의 switch문은 12에서 한가지만 크게 바뀐것으로 보인다.
+또한 Java 13 에서도 --enable-preview 옵션을 켜줘야 한다고 한다.
+ 
+* break 문법이 yield 으로 대체 됨
+
+```java
+
+private String numberToMessageByJava12(int number) {
+    return switch(number) {
+            case 0, 1, 2, 3:
+                break "zero or one or two or three";
+        case 4, 5:
+            break "four or five"; 
+        case 6:
+            break "six";
+        default:
+            break "Unknown";
+    };
+}
 
 
+private String numberToMessageByJava13(int number) {
+    return switch(number) {
+        case 0, 1, 2, 3:
+            yield "zero or one or two or three";
+        case 4, 5:
+            yield "four or five";
+        case 6:
+            yield "six";
+        default:
+            yield "Unknown";
+    };
+}
+```
+[참고: Java 13 – Switch Expressions](https://mkyong.com/java/java-13-switch-expressions/)
+
+개인적으로 Kotlin에서의 switch 문법이 생각이 난다.
 
 
 
