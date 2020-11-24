@@ -321,7 +321,7 @@ String message = (a > 0) ? "a는 양수입니다." : "a는 0또는 음수입니�
 [참고: 자바의 연산자 및 연산자 우선 순위](https://toma0912.tistory.com/66)
 
 ## (optional) Java 13. switch 연산자
-java13의 switch 연산자 이전에, 기존의 java switch 연산자 및 java 12에서 switch 연산자가 어떻게 바뀌었는지 확인하면 좋을 것 같다.
+java13의 switch 연산자를 보기전에 java 12에서 switch 연산자가 먼저 바뀐 내용이 존재한다.
 먼저 java 11 이하의 버전에서의 switch연산자는 다음과 같다.
 * 단 java 12를 그냥 사용시에는 사용할 수 없고, --enable-preview 옵션을 추가해야 한다.
 ```java
@@ -406,8 +406,10 @@ private String numberToMessage(int number) {
 
 java 13에서의 switch문은 12에서 한가지만 크게 바뀐것으로 보인다.
 또한 Java 13 에서도 --enable-preview 옵션을 켜줘야 한다고 한다.
+
+**java 14 이상부터는 --enable-preview 옵션을 키지 않아도 된다.**
  
-* break 문법이 yield 으로 대체 됨
+*  Java 12 value breaks syntax is no longer compiled in Java 13, uses yield instead.
 
 ```java
 
