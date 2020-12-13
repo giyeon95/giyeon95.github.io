@@ -321,9 +321,12 @@ String message = (a > 0) ? "a는 양수입니다." : "a는 0또는 음수입니�
 [참고: 자바의 연산자 및 연산자 우선 순위](https://toma0912.tistory.com/66)
 
 ## (optional) Java 13. switch 연산자
-java13의 switch 연산자를 보기전에 java 12에서 switch 연산자가 먼저 바뀐 내용이 존재한다.
-먼저 java 11 이하의 버전에서의 switch연산자는 다음과 같다.
-* 단 java 12를 그냥 사용시에는 사용할 수 없고, --enable-preview 옵션을 추가해야 한다.
+java13의 switch 연산자를 보기전에 java 12에서 ~~switch 연산자가 먼저 바뀐 내용이 존재한다.~~
+~~먼저 java 11 이하의 버전에서의 switch연산자는 다음과 같다.~~
+
+##### java 12 부터 *switch 연산자가 추가* 된 것이며, 기존의 switch문이 변경된 것이 아님
+
+* 단 java 12에서 switch연산자를 사용하려면, --enable-preview 옵션을 추가해야 한다.
 ```java
 private String numberToMessage(int number) {
     String message = "";
@@ -349,14 +352,14 @@ private String numberToMessage(int number) {
 }
 ```
 
-java12 부터는 다음과 같은 특징들이 추가되었다.
+java12 switch 연산자는 다음과 같은 특징을 가지고 있다.
 
 * Multiple case labels
 * Switch expression returning value via break (replaced with yield in Java 13 switch expressions)
 * Switch expression returning value via label rules (arrow)
 
 ```java
-// Multiple case labels 특징을 이용하여 다음과 같이 바꿀 수 있다.
+// Multiple case labels 특징을 이용하여 이렇게 사용할 수 있다.
 private String numberToMessage(int number) {
     String message = "";
     switch(number) {
@@ -377,7 +380,7 @@ private String numberToMessage(int number) {
 }
 
 
-// Switch expression returning value via break 특징을 이용하여, 이렇게도 바꿀 수 있다.
+// Switch expression returning value via break 특징을 이용하여, 이렇게도 사용할 수 있다.
 private String numberToMessage(int number) {
     return switch(number) {
             case 0, 1, 2, 3:
@@ -391,7 +394,7 @@ private String numberToMessage(int number) {
     };
 }
 
-// Switch expression returning value via label rules 특징 까지 이용한다면, -> 연산자를 통해, 이렇게 바꿀 수 있다.
+// Switch expression returning value via label rules 특징 까지 이용한다면, -> 연산자를 통해, 이렇게도 사용할 수있다.
 private String numberToMessage(int number) {
     return switch(number) {
             case 0, 1, 2, 3: -> "zero or one or two or three";
@@ -404,7 +407,7 @@ private String numberToMessage(int number) {
 [참고: Java 12 – Switch Expressions](https://mkyong.com/java/java-12-switch-expressions/)
 
 
-java 13에서의 switch문은 12에서 한가지만 크게 바뀐것으로 보인다.
+java 13에서의 ~~switch문은~~ switch 연산자는 12에서 한가지만 크게 바뀐것으로 보인다.
 또한 Java 13 에서도 --enable-preview 옵션을 켜줘야 한다고 한다.
 
 **java 14 이상부터는 --enable-preview 옵션을 키지 않아도 된다.**
@@ -442,7 +445,7 @@ private String numberToMessageByJava13(int number) {
 ```
 [참고: Java 13 – Switch Expressions](https://mkyong.com/java/java-13-switch-expressions/)
 
-개인적으로 Kotlin에서의 switch 문법이 생각이 난다.
+개인적으로 Kotlin에서의 switch가 생각이 난다.
 
 
 
