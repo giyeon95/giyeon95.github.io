@@ -20,8 +20,8 @@ categories: whiteship
  - if문(조건문)은 조건식이 많아질수록 else-if를 추가해야하므로 조건식이 많아져 복잡하고, 계산해야 하므로 시간이 오래걸린다. 그러나 switch 문의 조건식은 결과값으로 int형 범위의 정수값을 허용하므로, 하나의 조건식만 계산하면 if문보다 속도가 빠르다. [switch vs if 어떤 때 어는게 효율적인가요?](https://kldp.org/node/62262)
  - 조건식은 연산결과가 int 형 범위의 정수값 이어야 한다. 또한 case문에는 오로지 ~~*[리터럴](https://giyeon95.github.io/whiteship/whiteship_study_week02/)* 이나, *상수* 만을 허용한다.~~ (JDK 1.7 이상부터 String 변수도 허용 된다.)
  - case중간에, break문을 만나게 되면 case문을 빠져나가게 되며, break문이 없다면 모든 문장을 수행하게 된다.
- 
- 
+
+
 ```java
 public class SwitchExample {
 
@@ -181,7 +181,7 @@ do-while 실행입니다.
 ```
 
 
---- 
+---
 ## 과제(옵션)을 진행해보자
 
 ### 과제 0. JUnit 5 학습하세요.
@@ -189,15 +189,76 @@ do-while 실행입니다.
 * 이미 JUnit 알고 계신분들은 다른 것 아무거나!
 * 더 자바, 테스트 강의도 있으니 참고하세요~
 
-
 ### 과제 1. live-study 대시 보드를 만드는 코드를 작성하세요.
-* 깃헙 이슈 1번부터 18번까지 댓글을 순회하며 댓글을 남긴 사용자를 체크 할 것.
-* 참여율을 계산하세요. 총 18회에 중에 몇 %를 참여했는지 소숫점 두자리가지 보여줄 것.
-* Github 자바 라이브러리를 사용하면 편리합니다.
-* 깃헙 API를 익명으로 호출하는데 제한이 있기 때문에 본인의 깃헙 프로젝트에 이슈를 만들고 테스트를 하시면 더 자주 테스트할 수 있습니다.
+
+> 깃헙 이슈 1번부터 18번까지 댓글을 순회하며 댓글을 남긴 사용자를 체크 할 것.
+> 참여율을 계산하세요. 총 18회에 중에 몇 %를 참여했는지 소숫점 두자리가지 보여줄 것.
+> Github 자바 라이브러리를 사용하면 편리합니다.
+> 깃헙 API를 익명으로 호출하는데 제한이 있기 때문에 본인의 깃헙 프로젝트에 이슈를 만들고 테스트를 하시면 더 자주 테스트할 수 있습니다.
+
+1. **github API를 사용하기 위해 필요한 token key 사전 발급**
+
+- 발급 방법: github 접속 -> Settings -> Developer settings -> Personal access tokens -> Generate new token
+- 권한은 repo만 허용을 하였다. (issue에 접근하기 위함)
+
+<img src="https://user-images.githubusercontent.com/37217320/102365242-ad7daa80-3ffa-11eb-9a30-1a2e9d3641c6.png" alt="git-01" style="zoom: 33%;" />
+
+<img src="https://user-images.githubusercontent.com/37217320/102365671-267d0200-3ffb-11eb-90d1-50d97f421c3a.png" alt="스크린샷 2020-12-16 오후 11 54 03" style="zoom:33%;" />
+
+<img src="https://user-images.githubusercontent.com/37217320/102365956-765bc900-3ffb-11eb-9403-c83742d10746.png" alt="스크린샷 2020-12-16 오후 11 54 06" style="zoom:33%;" />
+
+<img src="https://user-images.githubusercontent.com/37217320/102366452-03068700-3ffc-11eb-98d0-9732a1de01f9.png" alt="스크린샷 2020-12-17 오전 12 06 56" style="zoom:33%;" />
+
+
+
+2. 발급받은 access token이 유효한지 사전 테스트 - curl
+
+<img width="1247" alt="스크린샷 2020-12-17 오전 12 28 48" src="https://user-images.githubusercontent.com/37217320/102369129-f172ae80-3ffe-11eb-981e-1da6110ce786.png" style="zoom: 50%;" >
+
+[참고: github api 사용방법](https://taetaetae.github.io/2017/03/02/github-api/)
+
+
+
+https://api.github.com/ API 호출시 어떤  API를 호출할 수 있는지 상세하게 나온다. (Hateos restful 성숙도 모델(?)에서 3단계인가 기억이 잘 안난다..)
+
+그중 우리는 특정 레포지토리(online-study)에 관해 알아야 하므로, repo를 우선적으로 조회 해보자
+
+ "repository_url": "https://api.github.com/repos/{owner}/{repo}",
+
+
+
+<img width="1247" alt="스크린샷 2020-12-17 오전 12 31 43" src="https://user-images.githubusercontent.com/37217320/102369424-41ea0c00-3fff-11eb-9190-f9ab33a49fcb.png" style="zoom:50%;" >
+
+
+
+
+
+
+
+repository_url을 조회해보니, 관련있을것 같은 issues_url 을 찾았다.
+
+"issues_url": "https://api.github.com/repos/giyeon95/giyeon95.github.io/issues{/number}",
+
+<img src="/Users/giyeon/Library/Application Support/typora-user-images/스크린샷 2020-12-17 오전 12.44.00.png" alt="스크린샷 2020-12-17 오전 12.44.00" style="zoom:50%;" />
+
+
+
+위에 나온 정보를 잘 조합해서 구현을 하면 되지 않을까 싶다.
+
+
+
+-- 추가구현 필요 --
+
+
+
+
+
+
+
 
 
 ### 과제 2. LinkedList를 구현하세요.
+
 * LinkedList에 대해 공부하세요.
 * 정수를 저장하는 ListNode 클래스를 구현하세요.
 * ListNode add(ListNode head, ListNode nodeToAdd, int position)를 구현하세요.
