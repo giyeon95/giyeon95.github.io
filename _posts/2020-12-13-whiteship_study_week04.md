@@ -862,15 +862,11 @@ class StackNodeTest {
 }
 ```
 
-
-
 [전체 소스 코드](https://github.com/giyeon95/whiteship-online-study/tree/week04/src/main/java/stack03)
 
 
 
 ## 과제 4. 앞서 만든 ListNode를 사용해서 Stack을 구현하세요.
-
-
 
 ### 1. LinkedNodeStack
 
