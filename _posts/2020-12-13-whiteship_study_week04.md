@@ -1,4 +1,4 @@
-### title: "[#4 백기선님 라이브 스터디] 제어문"
+title: "[#4 백기선님 라이브 스터디] 제어문"
 date: 2020-12-13 13:48:10 -0900
 categories: whiteship
 
@@ -1112,5 +1112,5 @@ class QueueNodeTest {
 }
 ```
 
-[전체 소스 코드](https://github.com/giyeon95/whiteship-online-study/tree/week04/src/main/java/queue)
+[전체 소스 코드](https://github.com/giyeon95/whiteship-online-study/tree/week04/src/main/java/)
 
