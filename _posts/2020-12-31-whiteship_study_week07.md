@@ -157,7 +157,7 @@ CLASSPATH 환경변수는 OS 환경변수로 지정하는 방법이다.
 
 JVM이 시작될 때 JVM의 Class Loader은 OS에 지정된  CLASSPATH 환경변수를 항상 호출한다. 환경변수에 지정된 클래스들을 먼저 JVM에 적재한디.
 
-> [Class Loader: javac가 컴파일한 byteCode를 Runtime Date Area로 적재하는 역할을 한다.](https://giyeon95.github.io/whiteship/whiteship_study_week01/)
+> [Class Loader: javac가 컴파일한 byteCode를 Runtime Date Area로 적재하는 역할을 한다.](https://giyeon95.github.io/whiteship/whiteship_study_week01/#jvm의-구성요소)
 
 
 
