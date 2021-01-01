@@ -51,10 +51,6 @@ public class PackageDemo {
 
 
 
-----
-
-----
-
 
 
 # import 키워드
@@ -104,10 +100,6 @@ public class PackageDemo {
 *  java.lang 패키지의 클래스들은 묵시적으로 import 가 선언되어 있다. (ex) java.lang.String)
 
 
-
-----
-
----
 
 
 
@@ -189,10 +181,6 @@ java -classpath ".:lib" ClasspathDemo2 // linux, OSX
 
 
 
-----
-
----
-
 
 
 # 접근 지시자
@@ -235,6 +223,6 @@ java -classpath ".:lib" ClasspathDemo2 // linux, OSX
 
 > [Java의 정석 [2판]](https://www.kangcom.com/sub/view.asp?sku=201002020001)
 >
-> [[자바컴파일 - javac 명령어/옵션 사용법 및 문제해결 (Feat. 스프링부트)](https://suzxc2468.tistory.com/193)](https://suzxc2468.tistory.com/193)
+> [[자바컴파일 - javac 명령어/옵션 사용법 및 문제해결 (Feat. 스프링부트)](https://suzxc2468.tistory.com/193)
 >
 > [클래스 패스](https://opentutorials.org/course/1223/5527)
