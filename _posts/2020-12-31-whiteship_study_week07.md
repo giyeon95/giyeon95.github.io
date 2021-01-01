@@ -49,6 +49,8 @@ public class PackageDemo {
 
 이는 java에서 패키지가 선언되어 있지 않으면 자동으로 unnamed package로 구분 된다. (이왕이면 효율적인 관리를 위해 패키지를 지정하자)
 
+
+
 # import 키워드
 
 ## import란?
@@ -95,6 +97,8 @@ public class PackageDemo {
 * 패키지명.* 을 작성하면, 해당 패키지의 속한 모든 클래스를 import 한다. (클래스의 이름 대신 *을 사용한다.)
 *  java.lang 패키지의 클래스들은 묵시적으로 import 가 선언되어 있다. (ex) java.lang.String)
 
+
+
 # classpath(클래스 패스)
 
 ## classpath(클래스 패스)란?
@@ -127,7 +131,7 @@ JVM이 클래스 파일을 찾기 위한 경로를 의미한다.
 
 3. 디렉터리 이동후 동일하게 실행해보면,  NoClassDefFoundError 가 발생함을 볼 수 있다.
 
-![스크린샷 2021-01-01 오후 1.14.27](/Users/giyeon/Library/Application Support/typora-user-images/스크린샷 2021-01-01 오후 1.14.27.png)
+![스크린샷 2021-01-01 오후 1 14 27](https://user-images.githubusercontent.com/37217320/103434573-d3d05680-4c46-11eb-80e0-a4eaab0d30fe.png)
 
 > 컴파일 시점에 지정된 classpath로 경로가 지정되었는데, 임의로 빌드된 파일의 경로를 변경한다면 지정된 classpath를 찾을 수 없으니, Exception을 뱉는다.
 
@@ -172,6 +176,10 @@ java -classpath ".:lib" ClasspathDemo2 // linux, OSX
 클래스 패스를 현재 디렉터리 및 상위 디렉터리를 지정함으로서 정상 실행되는 것을 볼 수 있다.
 
 
+
+----
+
+---
 
 
 
