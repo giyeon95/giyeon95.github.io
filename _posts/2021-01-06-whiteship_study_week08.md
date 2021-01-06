@@ -175,15 +175,84 @@ MyInterface myInterface = new MyInterfaceImpl();
     }
 ```
 
-자세한 내용은 라이브 스터디의 6주차 내용에 나와있으며, 
+자세한 내용은 라이브 스터디의 6주차 내용에 나와있으며, 6주차 (상속) 에서 학습하였던 메소드 디스패치 또한 동작을 한다.
 
-6주차 (상속) 에서 학습하였던 메소드 디스패치 역시 동작을 한다.
+[백기선님 라이브 스터디 6주차 상속- 메소드 디스패치(Method Dispatch)](https://giyeon95.github.io/whiteship/whiteship_study_week06/#4-메소드-디스패치method-dispatch)
 
-- 정적 메소드 디스패치(Static Method Dispatch)
-- 동적 메소드 디스패치(Dynamic Method Dispatch)
-- 더블 메소드 디스패치(Double Method Dispatch)
 
-[백기선님 라이브 스터디 6주차 상속](https://giyeon95.github.io/whiteship/whiteship_study_week06/#4-메소드-디스패치method-dispatch)
+
+
+
+## 인터페이스 상속
+
+인터페이스는 다른 인터페이스를 상속 받을 수 있으며 다중 상속도 가능하다.
+
+ 예를들어 아래와 같이 ServiceA, ServiceB 인터페이스를 정의해보자
+
+```java
+public interface ServiceA {
+
+    void runServiceA();
+}
+
+public interface ServiceB {
+
+  	void runServiceB();
+}
+```
+
+
+
+그리고 위에서 정의한 ServiceA, ServiceB를 다중상속한 CommonService의 정의는 다음과 같다.
+
+```java
+public interface CommonService extends ServiceA, ServiceB {
+
+}
+```
+
+
+
+그리고 위에서 정의한 CommonService를 구현한 CommonServiceImpl을 정의해보았다.
+
+> 이렇게 되면 ServiceA, ServiceB를 구현해야할까? 라는 의구심이 들었는데 아래와 같이 해결되었다.
+
+```java
+public class CommonServiceImpl implements CommonService {
+
+    @Override
+    public void runServiceA() {
+
+    }
+
+    @Override
+    public void runServiceB() {
+
+    }
+}
+```
+
+위와 같이 CommonService의 부모 인터페이스(?)의 정의된 메소드는 전부 구현을 해야한다. (미구현 시 컴파일 에러가 뜬다.)
+
+
+
+즉 CommonService는 명시적으로 이렇게 정의할 수도 있다.
+
+```java
+public interface CommonService extends ServiceA, ServiceB {
+
+    @Override
+    void runServiceA();
+
+    @Override
+    void runServiceB();
+}
+
+```
+
+
+
+## 인터페이스의 기본 메소드 (Default Method), 자바 8
 
 
 
@@ -191,6 +260,4 @@ MyInterface myInterface = new MyInterfaceImpl();
 
 > [Java의 정석 [2판]](https://www.kangcom.com/sub/view.asp?sku=201002020001)
 >
-> [[자바컴파일 - javac 명령어/옵션 사용법 및 문제해결 (Feat. 스프링부트)](https://suzxc2468.tistory.com/193)
->
-> [클래스 패스](https://opentutorials.org/course/1223/5527) 
+> 
