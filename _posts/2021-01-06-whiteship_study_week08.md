@@ -16,7 +16,7 @@ categories: whiteship
 * 인터페이스의 static 메소드, 자바 8
 * 인터페이스의 private 메소드, 자바 9
 
-## 
+
 
 ## 인터페이스란?
 
@@ -153,7 +153,7 @@ class MyServiceImplTest {
 
 
 
-## 
+
 
 ## 인터페이스 레퍼런스를 통해 구현체를 사용하는 방법
 
@@ -236,7 +236,7 @@ public class CommonServiceImpl implements CommonService {
 
 
 
-즉 CommonService는 명시적으로 이렇게 정의할 수도 있다.
+즉 CommonService는 *명시적*으로 이렇게 정의할 수도 있다.
 
 ```java
 public interface CommonService extends ServiceA, ServiceB {
@@ -254,10 +254,82 @@ public interface CommonService extends ServiceA, ServiceB {
 
 ## 인터페이스의 기본 메소드 (Default Method), 자바 8
 
+위에서 인터페이스는 일종의 추상 클래스라고 하였다. 그러나 java의 추상 클래스는 메소드를 구현 해놓을 수 있지만, 인터페이스는 java 8 이전에서는 메소드에 구현 할 수 없었다. 
+
+java 8부터 지원하는 인터페이스의 Default Method는 메소드 선언이 아니라 구현체를 제공하는 방법이다.
+
+위에서 사용한 initService()를 default method로 변경해보자.
+
+```java
+public interface MyService {
+
+    default void initService() {
+        System.out.println("service init!!");
+    }
+}
+
+```
+
+리턴자료형 앞에 default 키워드를 붙여주고 안에서 동작할 기능을 작성하면 된다.
+
+
+
+### 특징 
+
+* 해당 인터페이스를 구현한 클래스를 깨트리지 않고 새 기능을 추가할 수 있다.
+* default method는 구현체가 알 수 없기 때문에, 런타임 에러가 발생할 수 있다. (문서화를 잘하자 @ImplSpec javadoc 사용)
+* **Object가 제공하는 기능(equals, hashcode..)는 기본 메소드를 제공할 수 없다.**
+* 수정할 수 있는 인터페이스에만 기본 메소드를 제공할 수 있다.
+* **인터페이스를 상속받는 인터페이스에서 다시 추상 메소드로 변경 할 수 있다.**
+* 인터페이스 구현체가 재정의 할 수도 있다.
+
+
+
+[Inflearn - 더 자바, Java 8 (백기선님 강의)](https://www.inflearn.com/course/the-java-java8?inst=6fcc1e30) 를 수강하면, 이해하기 쉽게 설명해 주신다.
+
+
+
+## 인터페이스의 static 메소드, 자바 8
+
+> static 메소드 역시 Java 8부터 지원한다.
+
+static 메소드는 클래스의 인스턴스 없이 호출이 가능하며, 주로 유틸리티 함수를 만드는데 유용하게 사용된다.
+
+인터페이스의 구현체는 static 메소드를 사용할 수 없으며, 인스턴스를 생성하지 않고 클래스만으로 호출할 수 있는 장점이 있다.
+
+
+
+
+
+## 인터페이스의 private 메소드, 자바 9
+
+> private 메소드는 Java 9부터 지원한다.
+
+인터페이스 내의 private 메소드는 아래 두 케이스에서만 사용할 수 있다.
+
+* default 메소드
+* static 메소드
+
+### 인터페이스의 default 메소드의 private 메소드
+
+인터페이스를 구현하는 클래스에서 재정의하거나 사용할 수 없는 특징을 가지고 있다.
+
+### 인터페이스의 static 메소드에서의 private 메소드
+
+인터페이스의 static 메소드를 외부에서 사용할 수 없는 특징을 가지고 있다.(인터페이스 내부적으로만 사용 가능)
+
+
+
 
 
 ## Reference
 
 > [Java의 정석 [2판]](https://www.kangcom.com/sub/view.asp?sku=201002020001)
 >
-> 
+> [Inflearn - 더 자바, Java 8 (백기선님 강의)](https://www.inflearn.com/course/the-java-java8?inst=6fcc1e30)
+>
+> [자바8 #인터페이스 디폴트 메서드와 정적메서드](https://frontierdev.tistory.com/67)
+>
+> [정적 메소드는 언제 써야 하는가? ::마이구미](https://mygumi.tistory.com/253)
+>
+> [[Java] 인터페이스 - 인터페이스의 요소들](https://velog.io/@foeverna/Java-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%9A%94%EC%86%8C%EB%93%A4)
