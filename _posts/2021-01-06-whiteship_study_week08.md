@@ -254,7 +254,7 @@ public interface CommonService extends ServiceA, ServiceB {
 
 ## 인터페이스의 기본 메소드 (Default Method), 자바 8
 
-위에서 인터페이스는 일종의 추상 클래스라고 하였다. 그러나 java의 추상 클래스는 메소드를 구현 해놓을 수 있지만, 인터페이스는 java 8 이전에서는 메소드에 구현 할 수 없었다. 
+위에서 인터페이스는 일종의 추상 클래스라고 하였다. 그러나 java의 추상 클래스는 메소드를 구현 해놓을 수 있지만, 인터페이스는 java 8 이전에서는 메소드를 구현 할 수 없었다. 
 
 java 8부터 지원하는 인터페이스의 Default Method는 메소드 선언이 아니라 구현체를 제공하는 방법이다.
 
@@ -333,3 +333,4 @@ static 메소드는 클래스의 인스턴스 없이 호출이 가능하며, 주
 > [정적 메소드는 언제 써야 하는가? ::마이구미](https://mygumi.tistory.com/253)
 >
 > [[Java] 인터페이스 - 인터페이스의 요소들](https://velog.io/@foeverna/Java-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%9A%94%EC%86%8C%EB%93%A4)
+
