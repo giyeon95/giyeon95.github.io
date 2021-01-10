@@ -108,6 +108,111 @@ after Runtime Exception!
 
 
 
+### throw
+
+throw는 아래와 같이 Exception을 강제로 발생시킬때 사용한다.
+
+```java
+    public static void callRunTimeException() {
+        throw new RuntimeException("runtime exception call"); // 예외 발생
+    }
+```
+
+
+
+### throws
+
+throws는 예외가 발생했을때, 해당 method를 호출한 상위 메소드로 Exception을 던져준다.
+
+```java
+  public static void callRunTimeException() throws RuntimeException {
+        throw new RuntimeException("runtime exception call");
+    }
+```
+
+그런데 아래와 위와 같이, throws를 추가하여도 해당 메소드를 호출한 main 메소드에서는 별다른 변화가 없다. 왜 그럴까? (아래 Checked Exception, Unchecked Exception을 보자.)
+
+
+
+
+
+## 자바가 제공하는 예외 계층 구조
+
+![IMG_22294A635DD9-1](https://user-images.githubusercontent.com/37217320/104128180-5ffe1e80-53a9-11eb-9c12-d0de5cff4cd1.jpeg)
+
+위 그림은 자바가 제공하는 계층 구조를 그림으로 표현한 것이다. Throwable 클래스 역시 Object 클래스를 상속한다. 그리고 Error 클래스와 Exception 클래스로 나뉘어 진다.
+
+
+
+## Exception과 Error의 차이는?
+
+Error 클래스와 Exception 클래스에 표기된 javaDoc은 아래와 같다.
+
+**Error**
+
+> An Error is a subclass of Throwable that indicates serious problems that a reasonable application should not try to catch. Most such errors are abnormal conditions. The ThreadDeath error, though a "normal" condition, is also a subclass of Error because most applications should not try to catch it.
+> A method is not required to declare in its throws clause any subclasses of Error that might be thrown during the execution of the method but not caught, since these errors are abnormal conditions that should never occur. That is, Error and its subclasses are regarded as unchecked exceptions for the purposes of compile-time checking of exceptions.
+
+**Exception**
+
+>The class Exception and its subclasses are a form of Throwable that indicates conditions that a reasonable application might want to catch.
+>The class Exception and any subclasses that are not also subclasses of RuntimeException are checked exceptions. Checked exceptions need to be declared in a method or constructor's throws clause if they can be thrown by the execution of the method or constructor and propagate outside the method or constructor boundary.
+
+
+
+Error 클래스는 *try-catch로 잡을 수 없는 심각한 문제를 나타내는 Throwable의 하위 클래스* 이며 분류하자면 **UncheckedException**을 발생시킨다.
+
+Exception 클래스는 *합리적인 응용 프로그램이 포착하려는 조건을 나타내는 Throwable의 하위 클래스* 이며 RuntimeException의 하위 클래스 외에는 **CheckedException** 을, RuntimeException은 **UncheckedException**을 발생시킨다.
+
+
+
+즉 Error 클래스는 System에서의 심각한 오류를 야기시킬 수 있는 에러이며, Exception 클래스는 프로그래머가 *예외 처리*를 통하여 적절한 처리를 진행할 수 있는 클래스이다.
+
+
+
+## RuntimeException과 RE가 아닌 것의 차이는?
+
+위의 글에서 보면 CheckedException과 UncheckedException이란 말이 자주 등장한다. 이는 RuntimeException과 RuntimeException이 아닌 것의 차이와도 관련이 있다.
+
+
+
+RuntimeException을 상속 받는 모든 Exception은 UncheckedException이며, 그 외의 것들은 CheckedException을 발생시킨다.
+
+### Checked Exception vs Unchecked Exception
+
+|           | Checked Exception                               | Unchecked Exception                                      |
+| --------- | ----------------------------------------------- | -------------------------------------------------------- |
+| 구분      | UncheckedException을 제외한 모든 클래스         | RuntimeException 클래스 / RuntumeException의 자손 클래스 |
+| 처리 여부 | 반드시 예외 처리를 해줘야 함(try-catch, throws) | 명시적 처리를 강제하지 않음                              |
+| 확인 시점 | Compile Level                                   | Runtime Level                                            |
+| 트랜잭션  | Rollback 하지 않음                              | Rollback 진행                                            |
+
+
+
+위의 코드를 다시한번 살펴보자
+
+```java
+ public static void callRunTimeException() throws RuntimeException {
+        throw new RuntimeException("runtime exception call");
+    }
+```
+
+callRunTimeException 메소드는 RuntimeException을 발생시키며 *명시적인 처리를 강제하지 않기에* try-catch, throws를 사용 하던지, 안하던지 컴파일 단계에서 에러가 나지 않는다.
+
+> throws는 해당 method를 호출한 상위 메소드로 Exception을 던져주는데, RuntimeException은 상위 코드에서도 반드시 예외처리를 해주지 않아도 되기에, 의미가 없지 않나 싶다.
+
+
+
+RuntimeException을 CheckedException인 IOException으로 변경하면 어떻게 될까?
+
+![스크린샷 2021-01-11 오전 1 48 02](https://user-images.githubusercontent.com/37217320/104129190-0bf63880-53af-11eb-9b4b-05853d87c26b.png)
+
+![스크린샷 2021-01-11 오전 1 49 49](https://user-images.githubusercontent.com/37217320/104129258-4bbd2000-53af-11eb-8cc3-f10049766cf2.png)
+
+반드시 예외 처리를 해줘야 하기 때문에 컴파일단계에서 에러를 뱉는다. (try-catch로 감싸주거나, throws로 예외를 상위로 던져야 한다.)
+
+
+
 
 
 
@@ -116,11 +221,4 @@ after Runtime Exception!
 
 > [Java의 정석 [2판]](https://www.kangcom.com/sub/view.asp?sku=201002020001)
 >
-> [Inflearn - 더 자바, Java 8 (백기선님 강의)](https://www.inflearn.com/course/the-java-java8?inst=6fcc1e30)
->
-> [자바8 #인터페이스 디폴트 메서드와 정적메서드](https://frontierdev.tistory.com/67)
->
-> [정적 메소드는 언제 써야 하는가? ::마이구미](https://mygumi.tistory.com/253)
->
-> [[Java] 인터페이스 - 인터페이스의 요소들](https://velog.io/@foeverna/Java-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EC%9D%98-%EC%9A%94%EC%86%8C%EB%93%A4)
-
+> [[자바] 예외처리 (2) - 예외클래스의 구조](https://itmining.tistory.com/9)
