@@ -211,7 +211,88 @@ RuntimeException을 CheckedException인 IOException으로 변경하면 어떻게
 
 반드시 예외 처리를 해줘야 하기 때문에 컴파일단계에서 에러를 뱉는다. (try-catch로 감싸주거나, throws로 예외를 상위로 던져야 한다.)
 
+> main 문에서 throws 구문을 사용하면 main 메소드를 호출하는 JVM이 예외 처리를 진행한다.
 
+
+
+## 커스텀한 예외 만드는 방법
+
+커스텀한 예외를 만드려면 예외로 사용할 클래스를 정의하고 Exception 또는 RuntimeException을 상속해서 만들 수 있다.
+
+### Exception vs RuntimeException
+
+> Exception중 RuntimeException의 *자손 클래스는 UncheckedException*, 그 외에는 *CheckedException* 이라고 확인하였다. 
+> 예외를 컴파일 단계에서 처리해야 하는 경우 Exception을 상속하여 CheckedException을 발생시키고, 컴파일 단계에서 예외처리를 할 필요가 없는 경우 또는 트랜잭션 롤백이 필요한 경우 RuntimeException을 상속해 UncheckedException을 발생시키자
+
+
+
+### Custom CheckedException
+
+예외 클래스 정의 방법은 다음과 같다.
+
+```java
+public class MyCheckedException extends Exception {
+
+}
+```
+
+여기에서 사용자에게 보여줄 에러메시지를 정의 및 사용하고 싶다 다음과 같이 message를 매개변수로 받고 super 키워드로 넘겨주면 된다.
+
+```java
+public class MyCheckedException extends Exception {
+
+    public MyCheckedException(String message) {
+        super(message);
+    }
+}
+```
+
+
+
+```java
+
+public class ExceptionMain {
+
+    public static void main(String[] args) throws Exception {
+
+        throw new MyCheckedException("My CheckedException 입니다!");
+    }
+}
+```
+
+
+
+```bash
+Exception in thread "main" MyCustomException: My CheckedException 입니다!
+```
+
+
+
+### Custom UncheckedException
+
+예외 클래스 정의 방법은 CheckedException과 유사하나 다른점은 **RuntimeException**을 상속해야 한다는 것이다.
+
+```java
+public class MyUncheckedException extends RuntimeException {
+
+}
+
+```
+
+
+
+또한 CheckedException과 비교했을때, throws 키워드를 붙이지 않아도 컴파일 단계에서는 에러를 뱉지 않는다.
+
+```java
+
+public class ExceptionMain {
+
+    public static void main(String[] args) {
+
+        throw new MyUncheckedException();
+    }
+}
+```
 
 
 
