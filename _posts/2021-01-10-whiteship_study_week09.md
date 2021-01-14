@@ -130,7 +130,7 @@ throws는 예외가 발생했을때, 해당 method를 호출한 상위 메소드
     }
 ```
 
-그런데 아래와 위와 같이, throws를 추가하여도 해당 메소드를 호출한 main 메소드에서는 별다른 변화가 없다. 왜 그럴까? (아래 Checked Exception, Unchecked Exception을 보자.)
+그런데 아래와 위와 같이, throws를 추가하여도 해당 메소드를 호출한 main 메소드에서는 별다른 예외처리를 안해주어도 된다. 왜 그럴까? (아래 Checked Exception, Unchecked Exception을 확인하면 이해가 될 것이다.)
 
 
 
@@ -162,11 +162,11 @@ Error 클래스와 Exception 클래스에 표기된 javaDoc은 아래와 같다.
 
 Error 클래스는 *try-catch로 잡을 수 없는 심각한 문제를 나타내는 Throwable의 하위 클래스* 이며 분류하자면 **UncheckedException**을 발생시킨다.
 
-Exception 클래스는 *합리적인 응용 프로그램이 포착하려는 조건을 나타내는 Throwable의 하위 클래스* 이며 RuntimeException의 하위 클래스 외에는 **CheckedException** 을, RuntimeException은 **UncheckedException**을 발생시킨다.
+Exception 클래스는 *합리적인 응용 프로그램이 포착하려는 조건을 나타내는 Throwable의 하위 클래스* 이며 RuntimeException의 하위 클래스를 제외한 Exception은 **CheckedException** 을, RuntimeException 및 RuntimeException의 하위 클래스는 **UncheckedException**을 발생시킨다.
 
 
 
-즉 Error 클래스는 System에서의 심각한 오류를 야기시킬 수 있는 에러이며, Exception 클래스는 프로그래머가 *예외 처리*를 통하여 적절한 처리를 진행할 수 있는 클래스이다.
+즉 Error 클래스는 System에서의 심각한 오류를 야기시킬 수 있는 에러이며, Exception 클래스는 프로그래머가 *예외 처리*를 통하여 적절한 처리를 진행할 수 있다고 보면 된다.
 
 
 
