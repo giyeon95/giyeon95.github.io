@@ -13,15 +13,15 @@ categories: whiteship
 자바의 애노테이션에 대해 학습하세요.
 
 # 학습 내용
-* 애노테이션 정의하는 방법
+* [애노테이션 정의하는 방법](https://giyeon95.github.io/whiteship/whiteship_study_week12/#java에서-지원하는-애노테이션)
 
-* [@retention](https://github.com/retention)
+* [@Retention](https://giyeon95.github.io/whiteship/whiteship_study_week12/#retention)
 
-* [@target](https://github.com/target)
+* [@Target](https://giyeon95.github.io/whiteship/whiteship_study_week12/#target)
 
-* [@documented](https://github.com/documented)
+* [@Documented](https://giyeon95.github.io/whiteship/whiteship_study_week12/#document)
 
-* 애노테이션 프로세서
+* [애노테이션 프로세서](https://giyeon95.github.io/whiteship/whiteship_study_week12/#애노테이션-프로세서)
 
   
 
@@ -189,7 +189,7 @@ public @interface FunctionalInterface {}
 
 애노테이션을 적용할 위치를 지정하며, ElementType의 enum타입에 정의된 값으로 적용 위치를 지정할 수 있다.
 
-### 
+
 
 ### ElementType 종류
 
@@ -206,9 +206,9 @@ public @interface FunctionalInterface {}
 
  
 
-## @Document
+## @Documented
 
-애노테이션을 Javadoc에 포함시킨다.
+javadoc으로 api문서를 만들때, 어노테이션에 대한 설명도 포함하도록 지정한다.
 
 
 
@@ -225,6 +225,12 @@ public @interface FunctionalInterface {}
 <img width="1238" alt="스크린샷 2021-02-03 오후 10 49 30" src="https://user-images.githubusercontent.com/37217320/106755971-1637e980-6672-11eb-86d6-f79eda462172.png">
 
 * 롬복 어노테이션을 이용해 Getter/ Setter 가 class 파일에 생성
+
+
+
+이런 동작이 가능한 원리는 롬복 내부의 AnnotationProcessorHider 클래스의 내부 클래스인  AnnotationProcessor 클래스가 AbstractProcessor을 상속 하고 있다.
+
+<img width="1392" alt="스크린샷 2021-02-03 오후 10 55 12" src="https://user-images.githubusercontent.com/37217320/106756707-e2a98f00-6672-11eb-82a4-021dba8320c3.png">
 
 
 
