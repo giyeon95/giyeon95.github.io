@@ -124,7 +124,7 @@ Selector은 어느 Channel에 연결할지 선택하는 역할을 한다.
 
 ### InputStream의 주요 메소드
 
-
+InputStream의 경우 ByteArrayInputStream을 구현체로 사용하였다.
 
 #### 1. read()
 
@@ -158,30 +158,217 @@ Selector은 어느 Channel에 연결할지 선택하는 역할을 한다.
 void byteTest2() throws IOException {
     InputStream input = new ByteArrayInputStream(new byte[]{1, 2, 3, 4, 5, 6});
 
-    byte[] buf = new byte[4];
+        byte[] buf = new byte[4];
 
-    System.out.println(input.read(buf)); // 4개가 담기므로 4를 반환한다
+        System.out.println(input.read(buf)); // 4개가 담기므로 4를 반환한다
+        System.out.println(Arrays.toString(buf));
+        
+        System.out.println(input.read(buf)); // 남은 2개가 담기므로 2를 반환한다
+        System.out.println(Arrays.toString(buf));
 
-    for (byte b : buf) {
-        System.out.print(b+ ", ");
-    }
-    System.out.println();
-
-
-    System.out.println(input.read(buf)); // 남은 2개가 담기므로 2를 반환한다
-
-    for (byte b : buf) {
-        System.out.print(b+ ", ");
-    }
-    System.out.println();
-
-    System.out.println(input.read(buf)); // 담은 내용이 없으므로 -1을 반환한다.
+        System.out.println(input.read(buf)); // 담은 내용이 없으므로 -1을 반환한다.
 }
 ```
 
 
 
-<img width="1349" alt="스크린샷 2021-02-12 오전 12 32 55" src="https://user-images.githubusercontent.com/37217320/107658814-dbfdc600-6cc9-11eb-803a-537ccf8d82ad.png">
+<img width="1552" alt="스크린샷 2021-02-15 오후 3 21 00" src="https://user-images.githubusercontent.com/37217320/107912246-882cfe80-6fa1-11eb-8da0-fe39662da5ec.png">
+
+
+
+#### 3.  read(byte[] b, int off, int len)
+
+입력 스트림으로부터 len개의 바이트만큼 읽고 매개값으로 주어진 바이트 배열 b[off]부터 len개까지 저장한다. 그리고 실제로 읽은 바이트 수인 len개를 리턴한다. 만약 len개를 모두 읽지 못하면 실제로 읽은 바이트 수를 리턴한다.
+
+```java
+  @Test
+    @DisplayName("Byte Test 3")
+    void byteTest3() throws IOException {
+        InputStream input = new ByteArrayInputStream(new byte[]{1, 2, 3, 4, 5, 6});
+
+        byte[] buf = new byte[4];
+
+        System.out.println(input.read(buf, 2, 1)); // len에 표기된 길이만큼 buf의 index 2부터 저장한다. 리턴값은 실제 읽은 byte수를 리턴한다.
+        System.out.println(Arrays.toString(buf));
+
+        System.out.println(input.read(buf, 0, 2));
+        System.out.println(Arrays.toString(buf));
+
+        System.out.println(input.read(buf, 0, 4)); // 실제로 읽은 byte수는 3이다.
+        System.out.println(Arrays.toString(buf)); // index 0 부터 읽은 값을 덮어씌운다.
+
+
+    }
+```
+
+
+
+<img width="1240" alt="스크린샷 2021-02-15 오후 3 29 47" src="https://user-images.githubusercontent.com/37217320/107912861-a6dfc500-6fa2-11eb-873a-1ced4e1bc215.png">
+
+
+
+#### 4. close()
+
+사용한 시스템 자원을 반납하고 입력스트림을 닫아준다.
+
+```java
+  @Test
+    @DisplayName("InputStream close Test")
+    void bytesTest4() throws IOException {
+        //given
+        InputStream input = new ByteArrayInputStream(new byte[]{1, 2, 3});
+
+        //when
+        input.close();
+
+        //then
+        System.out.println(input.read());
+    }
+```
+
+
+
+위 close()를 이용하면, input.read()가 동작을 안할줄 알았지만 아래와 같이 정상 동작함을 볼 수 있었다.
+
+<img width="1419" alt="스크린샷 2021-02-15 오후 3 43 48" src="https://user-images.githubusercontent.com/37217320/107913892-9af50280-6fa4-11eb-8891-b7d3a7c53e20.png">
+
+왜그런지 조금 더 살펴보았더니 InputStream의 close메소드는 아무작업도 수행하지 않는다고 한다. 
+
+>Closes this input stream and releases any system resources associated with the stream.
+>The close method of InputStream does nothing.
+>Throws:
+>IOException – if an I/O error occurs.
+
+
+
+### OutputStream의 주요 메소드
+
+outputStream의 경우, FileOutputStream을 구현체로 사용하였다.
+
+#### 1. write(int b)
+
+매개변수 b는 0에서 255까지의 정수를 인자로 받고 이에 대응하는 바이트를 출력 스트림에 쓴다.
+
+만약 0에서 255의 범위를 벗어난 int타입의 값이 write(int b) 메소드에 전달되면,
+
+int 타입의 최하위 비트(least significant byte)가 쓰이고 나머지 3바이트는 무시된다.
+
+(int 타입을 byte 타입으로 캐스팅하면서 이러한 효과가 발생한다.)
+
+출처: https://cbts.tistory.com/54 [IT일기장]
+
+
+
+```java
+    @Test
+    @DisplayName("OutputStream test")
+    void outputStreamTest() throws IOException {
+        final String PATH = "/Users/giyeon/Desktop";
+
+        try (OutputStream newOutput = new FileOutputStream(PATH + "/outputExample.txt")) {
+            newOutput.write(256 + 97); // a
+            newOutput.write(98); // b
+        }
+    }
+```
+
+
+
+![image](https://user-images.githubusercontent.com/37217320/107920629-9fbfb380-6fb0-11eb-88c3-73fa951c23b4.png)
+
+
+
+<img width="842" alt="스크린샷 2021-02-15 오후 5 06 12" src="https://user-images.githubusercontent.com/37217320/107920322-1e682100-6fb0-11eb-9373-1171659a454d.png">
+
+
+
+#### 2. write(byte[] b)
+
+매개변수 b로 전달된 byte array를 출력 스트림에 쓴다.
+
+```:q!
+@Test
+@DisplayName("OutputStream test2")
+void outputStream2Test() throws IOException {
+    final String PATH = "/Users/giyeon/Desktop";
+
+    String contents = "Hello whiteship java online study!!";
+    byte[] bytes = contents.getBytes();
+
+    try (OutputStream output = new FileOutputStream(PATH + "/outputExample.txt")) {
+        output.write(bytes);
+    }
+}
+```
+
+<img width="842" alt="스크린샷 2021-02-15 오후 5 17 49" src="https://user-images.githubusercontent.com/37217320/107921359-be727a00-6fb1-11eb-8185-6dcc9070e19e.png">
+
+#### 3. write(byte[] b, int off, int len)
+
+b[] 값중 b[off] 부터, off+len 까지의 값만 출력스트림에 쓴다.
+
+off+len의 길이가, b[]의 길이를 초과하면 IndexOutOfBoundsException가 발생한다.
+
+```java
+@Test
+@DisplayName("OutputStream test3")
+void outputStream3Test() throws IOException {
+    final String PATH = "/Users/giyeon/Desktop";
+
+    String contents = "Hello whiteship java online study!!";
+    byte[] bytes = contents.getBytes();
+
+    try (OutputStream output = new FileOutputStream(PATH + "/outputExample.txt")) {
+        output.write(bytes, 6, 10);
+    }
+}
+```
+
+![스크린샷 2021-02-15 오후 5 22 18](https://user-images.githubusercontent.com/37217320/107921799-5ec89e80-6fb2-11eb-90a2-d73095937b0c.png)
+
+#### 4. flush()
+
+출력 스트림 내부에는 작은 버퍼가 있는데, 데이터 출력전에 버퍼에 쌓여있다가 순서대로 출력한다. flush는 버퍼에 남아있는 데이터를 모두 출력시키고 버퍼를 비워준다.
+
+> FileOutputStream에서는 flush()를 구현하지 않아, 별도 동작이 없다.
+
+
+
+#### 5. close()
+
+출력 스트림을 닫고, 이 스트림과 관련된 모든 시스템 리소스를 해제한다.
+
+> try-catch-resources를 사용하면 별도의 close() 호출 없이 내부적으로 close()가 호출한다.
+
+<img width="505" alt="스크린샷 2021-02-15 오후 5 35 33" src="https://user-images.githubusercontent.com/37217320/107923082-55403600-6fb4-11eb-81e3-99450cdbdd00.png">
+
+
+
+
+
+## Byte와 Character 스트림
+
+byte 스트림은 입출력 단위가 1 byte이다. Java에서는 한문자를 의미하는 char형이 2 byte 이기에 byte 스트림으로는 처리하는 데에는 어려움이 있다.
+
+ 이점을 보완하기 위해 문자기반의 스트림이 지원 된다. (Reader, Writer)
+
+
+
+| 바이트 기반 보조 스트림                       | 문자 기반 보조스트림               |
+| :-------------------------------------------- | :--------------------------------- |
+| BufferedInputStream<br />BufferedOutputStream | BufferedReader<br />BufferedWriter |
+| FilterInputStream<br />FilterOutputStream     | FilterReader<br />FilterWriter     |
+| LineNumberInputStream(deprecated)             | LineNumberReader                   |
+| PrintStream                                   | PrintWriter                        |
+| PushbackInputStream                           | PushbackReader                     |
+
+
+
+
+
+## 표준 스트림 (System.in, System.out, System.err)
+
+
 
 
 
@@ -191,4 +378,6 @@ void byteTest2() throws IOException {
 
 ## Reference
 
+> [Java의 정석 [2판]](https://www.kangcom.com/sub/view.asp?sku=201002020001)
+>
 > [21. 채널 (Channel)](https://adrian0220.tistory.com/150?category=775742)
