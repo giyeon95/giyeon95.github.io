@@ -368,11 +368,43 @@ byte 스트림은 입출력 단위가 1 byte이다. Java에서는 한문자를 �
 
 ## 표준 스트림 (System.in, System.out, System.err)
 
+System.in, System.out, System.err 은 java.lang.System으로 멤버변수인 in, out, err을 통해 표준 입력, 출력, 에러를 제공한다.
 
 
 
+### 1. System.in
+
+System 클래스 안의 멤버변수 in의 타입은 InputStream이다. InputStream은 최상위 클래스이면서 추상클래스이다. 
+
+System.in을 통하여 지정하는 객체는 JVM이 메모리로 올라오면서 객체를 생성하고 넣어주는 것으로 보인다. 특징으로는 InputStream이므로 바이트 단위로만 입출력이 허용된다.
+
+![스크린샷 2021-02-19 오전 12 07 46](https://user-images.githubusercontent.com/37217320/108376620-82a41280-7246-11eb-9690-5c87cdf7f0db.png "System.java 내의 in 변수")
 
 
+
+![스크린샷 2021-02-19 오전 12 15 48](https://user-images.githubusercontent.com/37217320/108377686-9f8d1580-7247-11eb-973b-5463dff4065d.png)
+
+
+
+![스크린샷 2021-02-19 오전 12 15 34 "in을 지정해주는 듯한 클래스(확실하지는 않다)"](https://user-images.githubusercontent.com/37217320/108377654-98fe9e00-7247-11eb-99f7-473dc7f083ab.png)
+
+
+
+### 2. System.out
+
+System 클래스 안의  out 변수는 PrintStream 타입이다. PrintStream은 OutputStream을 구현하고 있으며, Exception을 안전하게 처리한 메소드로만 구성되어 있다.
+
+ ![스크린샷 2021-02-19 오전 12 24 22](https://user-images.githubusercontent.com/37217320/108378989-d3b50600-7248-11eb-8c1a-2de6dab63d1c.png)
+
+
+
+### System.err
+
+System.err은 out과 유사하며, PrintStrea을 구현한다. 정상적인 출력은 out으로 나가고, 오류가 발생하였을때 알려주어야 할 내용은 System.err로 나간다고 한다.
+
+
+
+![스크린샷 2021-02-19 오전 12 28 09](https://user-images.githubusercontent.com/37217320/108379499-5a69e300-7249-11eb-84ad-b3cafec0bb48.png)
 
 
 
@@ -381,3 +413,5 @@ byte 스트림은 입출력 단위가 1 byte이다. Java에서는 한문자를 �
 > [Java의 정석 [2판]](https://www.kangcom.com/sub/view.asp?sku=201002020001)
 >
 > [21. 채널 (Channel)](https://adrian0220.tistory.com/150?category=775742)
+>
+> [[JAVA\] System 클래스(표준 입출력) : System.in, System.out, System.err](https://hyeonstorage.tistory.com/235)
