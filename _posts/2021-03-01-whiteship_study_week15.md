@@ -121,9 +121,9 @@ Predicate 인터페이스에는 default메소드로 정의된 아래와 같은 �
 
 
 
-##### 	1. default Predicate<T> and (Predicate<? super T> other)
+1.1 `default Predicate<T> and (Predicate<? super T> other)`
 
-​	Param의 other와 기존 predicate 조건을 and 조건으로 구성된 Predicate를 리턴한다.
+> Param의 other와 기존 predicate 조건을 and 조건으로 구성된 Predicate를 리턴한다.
 
 ```java
 Predicate<String> predicate = a -> a.startsWith("t");
@@ -132,9 +132,9 @@ Predicate<String> predicateAnd = predicate.and(a -> a.endsWith("i"));
 boolean check2 = predicateAnd.test("test"); // false
 ```
 
-##### 	2. default Predicate<T> negate()
+1.2 `default Predicate<T> negate()`
 
-​	predicate 조건의 부정을 반환하는 Predicate 리턴한다.
+> predicate 조건의 부정을 반환하는 Predicate 리턴한다.
 
 ```java
 Predicate<String> predicate = a -> a.startsWith("t");
@@ -143,9 +143,9 @@ Predicate<String> predicateNegate = predicate.negate();
 boolean check2 = predicateNegate.test("test"); // false 
 ```
 
-##### 	3. default Predicate<T> or(Predicate<? super T> other)
+1.3 `default Predicate<T> or(Predicate<? super T> other)`
 
-​	Param의 other와 predicate 조건을 or 조건으로 구성된 Predicate 리턴한다.
+> Param의 other와 predicate 조건을 or 조건으로 구성된 Predicate 리턴한다.
 
 ```java
 Predicate<String> predicate = a -> a.startsWith("t");
