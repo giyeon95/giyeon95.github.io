@@ -33,7 +33,7 @@ Java8 부터 지원하며, 메소드를 간결한 식(expression)으로 표현�
 
 > FunctionalInterface: 오직 하나의 메소드 선언을 갖는 인터페이스
 
-[참고: 람다식(Lambda Expression)](https://atoz-develop.tistory.com/entry/JAVA-람다식Lambda-Expression)
+[REF: 람다식(Lambda Expression)](https://atoz-develop.tistory.com/entry/JAVA-람다식Lambda-Expression)
 
 
 
@@ -58,7 +58,7 @@ public class LambdaDemo {
 }
 ```
 
-위 코드를 람다식을 사용하면 아래와 같이 변경할 수 있다.
+위 코드를 람다식을 사용하면 아래와 같이 한줄로도 사용할 수 있다.
 
 ```java
 public class LambdaDemo {
@@ -144,7 +144,7 @@ boolean check2 = predicateNegate.test("test"); // false
 
 ##### 1.3 or(Predicate<? super T> other)
 
-Predicate<T>를 인수로 받아 기존 Predicate 와 `or` 조건으로 결합 Predicate 리턴한다.
+Predicate<T>를 인수로 받아 기존 Predicate 와 `or` 조건으로 결합 Predicate 반환한다.
 
 ```java
 Predicate<String> predicate = a -> a.startsWith("t");
@@ -155,7 +155,7 @@ boolean check2 = predicateOr.test("test"); // true
 
 ##### 1.4 not(Predicate<? super T> target) 
 
-java 11 부터 지원하는 static 메소드이며, Predicate<T>를 인수의 부정 Predicate를 반환한다.
+java 11 부터 지원하는 static 메소드이며 인수로 전달된 Predicate의 부정 Predicate를 반환한다.
 
 
 
@@ -216,7 +216,7 @@ Integer apply = function.apply(3); // 300
 
 ##### 3.1 andThen(Function<? super R, ? extends V> after)
 
-Function<T>의 default메소드로서, apply 메소드를 실행후 반환 값을 인수로 받은 Function<T>의 apply 메소드의 인수로 전달한다, 그리고 결과를 반환 한다.
+Function<T>의 default메소드로서, apply 메소드를 실행후 반환 값을 인수로 받은 Function<T>의 apply 메소드의 인수로 전달하고 결과를 반환 한다.
 
 ```java
 Function<Integer, Integer> function = a -> a * 100;
@@ -233,7 +233,7 @@ Integer apply1 = function1.apply(3); // 150
 
 Function<T>의 default 메소드로서, 인수로 받은 Function<T>의 apply 메소드를 먼저 실행 및 반환 후 apply 메소드를 실행하여 결과를 반환 한다.
 
-> andThen 메소드와 반대 순서로 동작한다.
+`andThen 메소드와 반대 순서로 동작한다.`
 
 ```java
 Function<Integer, Integer> function = a -> a * 100;
@@ -264,6 +264,8 @@ String s = supplier.get(); // test
 ```
 
 
+
+[REF: https://multifrontgarden.tistory.com/125](https://multifrontgarden.tistory.com/125)
 
 ## Variable Capture
 
@@ -355,9 +357,9 @@ public class LambdaDemo {
 
 
 
-https://vagabond95.me/posts/lambda-with-final/
+[REF: https://vagabond95.me/posts/lambda-with-final](https://vagabond95.me/posts/lambda-with-final/)
 
-https://www.inflearn.com/course/the-java-java8
+[REF: https://www.inflearn.com/course/the-java-java8](https://www.inflearn.com/course/the-java-java8)
 
 
 
@@ -406,14 +408,12 @@ UnaryOperator<String> refStringOperator = String::new;
 
 
 
-https://www.inflearn.com/course/the-java-java8
+[REF: https://www.inflearn.com/course/the-java-java8](https://www.inflearn.com/course/the-java-java8)
 
 ## Reference
 
-> https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html
->
-> https://digitalbourgeois.tistory.com/66
->
-> https://tourspace.tistory.com/6
->
-> https://www.inflearn.com/course/the-java-java8
+> [https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+> [https://digitalbourgeois.tistory.com/66](https://digitalbourgeois.tistory.com/66)
+> [https://tourspace.tistory.com/6](https://tourspace.tistory.com/6)
+> [https://www.inflearn.com/course/the-java-java8](https://www.inflearn.com/course/the-java-java8)
+> [https://vagabond95.me/posts/lambda-with-final](https://vagabond95.me/posts/lambda-with-final)
