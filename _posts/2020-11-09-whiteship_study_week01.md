@@ -1,5 +1,5 @@
 ---
-title: "[WHITESHIP] 1. JVM 은 무엇이며 자바 코드는 어떻게 실행하는 것인가?"
+title: "[WHITESHIP #1] 1. JVM 은 무엇이며 자바 코드는 어떻게 실행하는 것인가?"
 date: 2020-11-09 22:05:10 -0400
 categories: whiteship
 ---
