@@ -185,7 +185,6 @@ RuntimeException을 상속 받는 모든 Exception은 UncheckedException이며, 
 | 구분      | UncheckedException을 제외한 모든 클래스         | RuntimeException 클래스 / RuntumeException의 자손 클래스 |
 | 처리 여부 | 반드시 예외 처리를 해줘야 함(try-catch, throws) | 명시적 처리를 강제하지 않음                              |
 | 확인 시점 | Compile Level                                   | Runtime Level                                            |
-| 트랜잭션  | Rollback 하지 않음                              | Rollback 진행                                            |
 
 
 
@@ -222,7 +221,7 @@ RuntimeException을 CheckedException인 IOException으로 변경하면 어떻게
 ### Exception vs RuntimeException
 
 > Exception중 RuntimeException의 *자손 클래스는 UncheckedException*, 그 외에는 *CheckedException* 이라고 확인하였다. 
-> 예외를 컴파일 단계에서 처리해야 하는 경우 Exception을 상속하여 CheckedException을 발생시키고, 컴파일 단계에서 예외처리를 할 필요가 없는 경우 또는 트랜잭션 롤백이 필요한 경우 RuntimeException을 상속해 UncheckedException을 발생시키자
+> ~~예외를 컴파일 단계에서 처리해야 하는 경우 Exception을 상속하여 CheckedException을 발생시키고, 컴파일 단계에서 예외처리를 할 필요가 없는 경우 또는 트랜잭션 롤백이 필요한 경우 RuntimeException을 상속해 UncheckedException을 발생시키자~~
 
 
 
@@ -298,7 +297,16 @@ public class ExceptionMain {
 
 
 
+## Study 피드백
 
+* java 에서 기본적으로 제공하는 예외가 어떤 것인지 알고 사용하자.
+* try-catch-finally 말고 try-with-resource를 사용하자. (jdk 1.7 이상 지원)
+  - try-with-resource에는 finally를 같이 사용할 수 있다.
+  - finally가 아니라 bytecode를 보면 catch로 감싸져 있으며 Throwabl로 감싸져있다.
+  - 정상 종료일때 close를 try문에서 호출 해주며, 에러시에는 catch에서 리턴해준다
+* Custom예외를 만들때는 Throwable도 같이 전달해주자. (Root cause)
+* Runtime 밑의 예외 클래스들은 알고가자
+* try-catch에서 return을 보내더라도, 무조건 finally에 있는 return으로 넘어간다. (안티 패턴)
 
 
 
