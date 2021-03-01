@@ -272,3 +272,5 @@ Util.boxing("암묵적 호출"); // 암묵적 호출
 > [[ Java] Java의 Generics](https://medium.com/@joongwon/java-java의-generics-604b562530b3)
 >
 > [[kotlin] 제너릭 변성(variance) 정리](https://namget.tistory.com/entry/kotlin-제너릭타입-정리)
+>
+> [STUDY HALLE - 14주차](https://rockintuna.tistory.com/102)
