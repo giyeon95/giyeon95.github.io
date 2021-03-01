@@ -1,10 +1,17 @@
 ---
-title: "[#8 백기선님 라이브 스터디] 인터페이스"
+title: "[WHITESHIP #1] 8. 인터페이스"
 date: 2021-01-06 22:05:10 -0900
 categories: whiteship
 ---
 
+
+
+![maxresdefault](https://user-images.githubusercontent.com/37217320/106457066-c5898a80-64d1-11eb-9cf2-22830bd214cc.jpg)
+
+[` #Season1 백기선님과 함께하는 자바 온라인 스터디`](https://github.com/whiteship/live-study)
+
 # 목표
+
 자바의 인터페이스에 대해 학습하세요.
 
 # 학습 내용

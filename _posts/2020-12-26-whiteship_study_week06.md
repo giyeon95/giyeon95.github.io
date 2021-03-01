@@ -1,10 +1,17 @@
 ---
-title: "[#6 백기선님 라이브 스터디] 상속"
+title: "[WHITESHIP #1] 6. 상속"
 date: 2020-12-25 23:57:10 -0900
 categories: whiteship
 ---
 
+
+
+![maxresdefault](https://user-images.githubusercontent.com/37217320/106457066-c5898a80-64d1-11eb-9cf2-22830bd214cc.jpg)
+
+[` #Season1 백기선님과 함께하는 자바 온라인 스터디`](https://github.com/whiteship/live-study)
+
 # 목표
+
 자바의 상속에 대해 학습해보자
 
 # 학습 내용

@@ -1,19 +1,43 @@
 ---
-title: "[#1 백기선님 라이브 스터디] JVM 은 무엇이며 자바 코드는 어떻게 실행하는 것인가?"
+title: "[WHITESHIP] 1. JVM 은 무엇이며 자바 코드는 어떻게 실행하는 것인가?"
 date: 2020-11-09 22:05:10 -0400
 categories: whiteship
 ---
 
-백기선님이 live-study를 진행한다는 영상을 보았다.
-이 기회에 **JAVA 기본기**를 정리할 수 있을 것 같아 참여해보려고 한다.. 
+
+
+
+
+![maxresdefault](https://user-images.githubusercontent.com/37217320/106457066-c5898a80-64d1-11eb-9cf2-22830bd214cc.jpg)
+
+[` #Season1 백기선님과 함께하는 자바 온라인 스터디`](https://github.com/whiteship/live-study)
 
 
 # 목표
-* 자바 소스파일(.java)을 JVM으로 실행하는 과정 이해하기.
+자바 소스파일(.java)을 JVM으로 실행하는 과정 이해하기.
+
+# 학습 내용
+
+- JVM이란 무엇인가
+
+- 컴파일 하는 방법
+
+- 실행하는 방법
+
+- 바이트코드란 무엇인가
+
+- JIT 컴파일러란 무엇이며 어떻게 동작하는지
+
+- JVM 구성 요소
+
+- JDK와 JRE의 차이
+
+  
 
 ## JVM 이란 무엇인가?
 
 **정의**
+
 - JVM(Java Virtual Machine)의 줄임말로, Java로 작성된 파일이 OS에 구애받지 않고 재사용을 가능하게 해주는 소프트웨어 구현체
   (OS에 종속되는 역할은 JVM의 대신 담당해주기 때문이라고 알고있다.)
 
@@ -66,7 +90,7 @@ categories: whiteship
     - Interpreter와 JIT로 구성되어있으며, 메모리에 적재된 클래스를 기계어로 변경해 명령어 단위로 실행한다.
  4. Garbage Collector
     - RunTime Data Area의 내부 Heap 메모리에 생성된 객체들 중, 참조되지 않는 객체들을 제거하는 역할 (Miner Gc, Major GC, Full GC)
- 
+
  
 
 ## JDK, JRE 차이점

@@ -1,13 +1,31 @@
 ---
-title: "[#2 백기선님 라이브 스터디] 자바 데이터 타입, 변수 그리고 배열"
+title: "[WHITESHIP #1] 2. 자바 데이터 타입, 변수 그리고 배열"
 date: 2020-11-17 22:05:10 -0900
 categories: whiteship
 ---
 
-백기선님 온라인 라이브 스터디를 기회로, JAVA 기본기를 정리해보자
+
+
+![maxresdefault](https://user-images.githubusercontent.com/37217320/106457066-c5898a80-64d1-11eb-9cf2-22830bd214cc.jpg)
+
+[` #Season1 백기선님과 함께하는 자바 온라인 스터디`](https://github.com/whiteship/live-study)
 
 # 목표
-* 자바의 프리미티브 타입, 변수 그리고 배열을 사용하는 방법을 익히자
+
+자바의 프리미티브 타입, 변수 그리고 배열을 사용하는 방법을 익힙니다.
+
+# 학습 내용
+
+- 프리미티브 타입 종류와 값의 범위 그리고 기본 값
+- 프리미티브 타입과 레퍼런스 타입
+- 리터럴
+- 변수 선언 및 초기화하는 방법
+- 변수의 스코프와 라이프타임
+- 타입 변환, 캐스팅 그리고 타입 프로모션
+- 1차 및 2차 배열 선언하기
+- 타입 추론, var
+
+
 
 ## 프리미티브 타입(Primitive type)
 메모리에 직접 데이터를 넣는 타입
@@ -23,8 +41,8 @@ categories: whiteship
     * float: 32bit
     * double: 64bit
 
-
 **[특징]**
+
  * 표현 범위: (2^bit수 -1) ~ (2^bit수-1) -1
  * nonNull (null이 들어갈 수 없음)
  * 산술 연산이 가능
@@ -64,16 +82,17 @@ class WrapperClassTest {
      + primitive data type을 그에 상응하는 wrapper class로 자동 변환 시켜주는 것
 
  - JDK 1.5 이상부터는 Autoboxing, Unboxing을 지원한다.
-     
+   
+
  *Autoboxing and unboxing are introduced in Java 1.5 to automatically convert the primitive type into boxed primitive( Object or Wrapper class). ... With the introduction of autoboxing and unboxing in Java, this primitive to object conversion happens automatically by Java compiler which makes the code more readable.*
- 
+
 [참고: What is Autoboxing and Unboxing in Java](https://javarevisited.blogspot.com/2012/07/auto-boxing-and-unboxing-in-java-be.html#axzz6dxWlCrdt)
 
 
 ## 리터럴(Literal)이란?
  - Java 언어가 실제로 처리하는 데이터
  - 변수의 값이 변하지 않는 데이터(메모리 주소가 바라보는 실제 값)
- 
+
  **[종류]**
   - 정수형 리터럴
     * 10: 정수 (int)
@@ -81,18 +100,19 @@ class WrapperClassTest {
     * 0b1010: 2진수 
     * 012: 8진수
     * 0x0A: 16진수
- 
+
  - 실수형 리터럴
     * 3.14: 실수 (double)
     * 3.14f: 실수 (float)
     * 314e -2: 지수를 이용한 표현법 (314 * 10^-2)
- 
+
  - 논리형 리터럴 
     * true, false
     
  - 문자형 리터럴
     * '', '\u[unicode값]'
     
+
 <img src="/assets/images/whiteship_java_2.1.png">
 
 [참고: 상수(Constant)와 리터럴(literal)이란?](https://mommoo.tistory.com/14)
@@ -121,7 +141,7 @@ public class Main {
 ## 타입 변환, 캐스팅 그리고 타입 프로모션
  변수나 리터럴 타입을 다른 타입으로 변환하는것을 타입 변환이라 한다.
  타입 변환에는 자동 형변환과, 강제 형변환으로 나뉘어 진다.
- 
+
 ###### 자동 형변환(Promotion)
 자동 형변환은 작은 메모리 크기의 데이터 타입을 큰 메모리 크기의 데이터 타입으로 변환하는 행위
 ```java
