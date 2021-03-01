@@ -257,10 +257,6 @@ Util.boxing("암묵적 호출"); // 암묵적 호출
 
 
 
---- Erasure 추가 예정 ---
-
-
-
 ## Reference
 
 > [Java의 정석 [2판]](https://www.kangcom.com/sub/view.asp?sku=201002020001)
