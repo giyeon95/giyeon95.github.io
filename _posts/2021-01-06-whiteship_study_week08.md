@@ -8,7 +8,7 @@ categories: whiteship
 
 ![maxresdefault](https://user-images.githubusercontent.com/37217320/106457066-c5898a80-64d1-11eb-9cf2-22830bd214cc.jpg)
 
-[` #Season1 백기선님과 함께하는 자바 온라인 스터디`](https://github.com/whiteship/live-study)
+[`#Season1 백기선님과 함께하는 자바 온라인 스터디`](https://github.com/whiteship/live-study)
 
 # 목표
 
