@@ -76,7 +76,7 @@ public class LambdaDemo {
 
 
 
-### 람다식 특징
+## 람다식 특징
 
 ```java
 // return void
@@ -85,7 +85,7 @@ public class LambdaDemo {
 3. a -> System.out.println(a);
 
 // return value
-4. (a, b) -> a + b; // return a;
+4. (a, b) -> a + b; // return a + b;
 5. (a, b) -> {System.out.println(a+b); return a+b;}
 ```
 
@@ -100,9 +100,67 @@ public class LambdaDemo {
 
 Functional Interface는 오직 하나의 메소드 선언을 갖는 인터페이스이다.
 
-Java8에서부터 아래와 같은 Functional Interface를 지원해준다.
+Java8부터는 다음과 같은 Functional Interface를 지원한다.
 
--- 추가예정 -- 
+### 1. Predicate
+
+Predicate는 <T> 타입을 파라미터로 받으며, test메소드를 이용해 boolean값을 리턴한다.
+
+```java
+interface Predicate<T> {
+    boolean test(T t);
+}
+```
+
+```java
+Predicate<String> isTestPredicate = a -> a.equals("test");
+boolean isTest = isTestPredicate.test("test"); // true
+```
+
+Predicate 인터페이스에는 default메소드로 정의된 아래와 같은 기능들이 추가로 존재한다.
+
+
+
+##### 	1. default Predicate<T> and (Predicate<? super T> other)
+
+​	Param의 other와 기존 predicate 조건을 and 조건으로 구성된 Predicate를 리턴한다.
+
+```java
+Predicate<String> predicate = a -> a.startsWith("t");
+Predicate<String> predicateAnd = predicate.and(a -> a.endsWith("i"));
+
+boolean check2 = predicateAnd.test("test"); // false
+```
+
+##### 	2. default Predicate<T> negate()
+
+​	predicate 조건의 부정을 반환하는 Predicate 리턴한다.
+
+```java
+Predicate<String> predicate = a -> a.startsWith("t");
+Predicate<String> predicateNegate = predicate.negate();
+
+boolean check2 = predicateNegate.test("test"); // false 
+```
+
+##### 	3. default Predicate<T> or(Predicate<? super T> other)
+
+​	Param의 other와 predicate 조건을 or 조건으로 구성된 Predicate 리턴한다.
+
+```java
+Predicate<String> predicate = a -> a.startsWith("t");
+Predicate<String> predicateOr = predicate.or(a -> a.endsWith("i"));
+
+boolean check2 = predicateOr.test("test"); // true 
+```
+
+
+
+
+
+
+
+
 
 
 
