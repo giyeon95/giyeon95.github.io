@@ -412,8 +412,13 @@ UnaryOperator<String> refStringOperator = String::new;
 
 ## Reference
 
-> [https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
-> [https://digitalbourgeois.tistory.com/66](https://digitalbourgeois.tistory.com/66)
-> [https://tourspace.tistory.com/6](https://tourspace.tistory.com/6)
-> [https://www.inflearn.com/course/the-java-java8](https://www.inflearn.com/course/the-java-java8)
-> [https://vagabond95.me/posts/lambda-with-final](https://vagabond95.me/posts/lambda-with-final)
+> [Lambda Expressions](https://docs.oracle.com/javase/tutorial/java/javaOO/lambdaexpressions.html)
+>
+> [[[JAVA8\] 함수형 인터페이스 정리](https://digitalbourgeois.tistory.com/66)](https://digitalbourgeois.tistory.com/66)
+>
+> [Java 8 Lambda Expression - 람다식 #3](https://tourspace.tistory.com/6)
+>
+> [Inflearn - 더 자바, Java 8](https://www.inflearn.com/course/the-java-java8)
+>
+> [[Java] lambda 와 effectively final](https://vagabond95.me/posts/lambda-with-final)
+
