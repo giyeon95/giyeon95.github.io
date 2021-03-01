@@ -1,5 +1,5 @@
 ---
-title: "[Whiteship Study] 15. 람다식"
+title: "[WHITESHIP #1] 15. 람다식"
 date: 2021-03-01 15:27:10 -0900
 categories: whiteship
 ---
@@ -8,7 +8,7 @@ categories: whiteship
 
 ![maxresdefault](https://user-images.githubusercontent.com/37217320/106457066-c5898a80-64d1-11eb-9cf2-22830bd214cc.jpg)
 
-[`백기선님과 함께하는 자바 온라인 스터디`](https://github.com/whiteship/live-study)
+[`백기선님과 함께하는 자바 온라인 스터디 #Session1`](https://github.com/whiteship/live-study)
 
 # 목표
 
