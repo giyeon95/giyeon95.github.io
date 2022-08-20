@@ -145,7 +145,7 @@ throws는 예외가 발생했을때, 해당 method를 호출한 상위 메소드
 
 ## 자바가 제공하는 예외 계층 구조
 
-![IMG_22294A635DD9-1](https://user-images.githubusercontent.com/37217320/104128180-5ffe1e80-53a9-11eb-9c12-d0de5cff4cd1.jpeg)
+![CleanShot 2022-08-20 at 17 45 45@2x](https://user-images.githubusercontent.com/37217320/185736885-8bc98f51-73a9-4476-900b-e95c1a268a35.png)
 
 위 그림은 자바가 제공하는 계층 구조를 그림으로 표현한 것이다. Throwable 클래스 역시 Object 클래스를 상속한다. 그리고 Error 클래스와 Exception 클래스로 나뉘어 진다.
 
