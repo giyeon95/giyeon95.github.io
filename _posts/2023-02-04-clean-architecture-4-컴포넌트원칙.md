@@ -142,7 +142,13 @@ stable --> flexible
 
 아래와 같이 stable 컴포넌트 내부에 U 클래스는 flexible 컴포넌트 내부의 C 클래스를 의존하고 있다고 가정해보고 이러한 문제는 DIP를 도입하여 개선해 볼 수 있다.
 
-![CleanShot 2023-02-04 at 22.44.25@2x](/Users/koi/Library/Application Support/CleanShot/media/media_zpJYb0QuH5/CleanShot 2023-02-04 at 22.44.25@2x.png)
+
+
+<img width="640" alt="CleanShot 2023-02-17 at 15 13 39@2x" src="https://user-images.githubusercontent.com/37217320/219563911-2278b1b2-4d14-4432-b89e-cb3c8dc1bb6a.png">
+
+
+
+
 
 그림 출처: https://icarus8050.tistory.com/47
 
@@ -150,7 +156,9 @@ stable --> flexible
 
 UServer라는 컴포넌트에 US를 넣고, UServer에 양컴포넌트가 의존하게 된다면, Flexible의 안정성 지표는 1으로 불안정성한 상태로 변경해볼 수 있다.
 
-![CleanShot 2023-02-04 at 22.45.32@2x](/Users/koi/Library/Application Support/CleanShot/media/media_hsGXK4NEjT/CleanShot 2023-02-04 at 22.45.32@2x.png)
+
+
+<img width="639" alt="CleanShot 2023-02-17 at 15 14 53@2x" src="https://user-images.githubusercontent.com/37217320/219564044-fa6e441b-3c44-4d95-9df5-8a2bdd213980.png">
 
 그림 출처: https://icarus8050.tistory.com/47
 
