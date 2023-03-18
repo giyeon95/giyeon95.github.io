@@ -22,15 +22,7 @@ SOLID는 좋은 아키텍처를 정의하는 원칙이며 아래와 같도록 �
 
 이 책에서는 Employee 클래스로 사례를 들고 있다.
 
-```mermaid
-classDiagram
-
-	class Employee
-	
-	Employee: calculatePay()
-  Employee: reportHours()
-  Employee: save()
-```
+<img width="447" alt="CleanShot 2023-03-18 at 17 43 25@2x" src="https://user-images.githubusercontent.com/37217320/226095175-9e7cfed8-9eba-4be4-8391-3c0cc1c03173.png">
 
 - calculatePay(): 회계팀에서 사용하는 기능
 - reportHours(): 인사팀에서 사용하는 기능
@@ -50,55 +42,11 @@ classDiagram
 
 각 메서드를 각기 다른 클래스로 이동시켜라. 이렇게 하면 세 클래스는 서로의 존재를 모른다.
 
-```mermaid
-classDiagram
-
-class PayCalculator
-PayCalculator: calculatePay()
-
-class HourReporter
-HourReporter: reportHours()
-
-class EmployeeSaver
-EmployeeSaver: saveEmployee()
-
-EmployeeData <-- PayCalculator
-EmployeeData <-- HourReporter
-EmployeeData <-- EmployeeSaver
-
-```
-
-
+<img width="449" alt="CleanShot 2023-03-18 at 17 43 47@2x" src="https://user-images.githubusercontent.com/37217320/226095191-bc9a6b3a-1815-4563-9226-64729b1629b8.png">
 
 다만 이 해결책은 개발자가 세 가지 클래스를 인스턴스화 하고 추적해야 한다는 게 단점이다. 이런 단점을 개선하기 위해 사용되는 기법으로 `퍼사드(Facade) 패턴`이 있다.
 
-```mermaid
-classDiagram
-
-class PayCalculator
-PayCalculator: calculatePay()
-
-class HourReporter
-HourReporter: reportHours()
-
-class EmployeeSaver
-EmployeeSaver: saveEmployee()
-
-EmployeeData <-- PayCalculator
-EmployeeData <-- HourReporter
-EmployeeData <-- EmployeeSaver
-
-class EmployeeFacade
-EmployeeFacade: calculatePay()
-EmployeeFacade: reportHours()
-EmployeeFacade: save()
-
-PayCalculator <-- EmployeeFacade
-HourReporter <--EmployeeFacade
-EmployeeSaver <-- EmployeeFacade
-```
-
-
+<img width="447" alt="CleanShot 2023-03-18 at 17 44 06@2x" src="https://user-images.githubusercontent.com/37217320/226095202-5b1d0b1a-89cc-4706-9345-b53024f1566a.png">
 
 
 
@@ -135,24 +83,7 @@ public class EmployeeFacade {
 
 혹은 가장 중요한 업무규칙만 Employee 클래스에 유지하며, 덜 중요한 클래스를 퍼사드로도 사용해볼 수도 있다.
 
-```mermaid
-classDiagram
-
-class Employee
-Employee: employeeData
-Employee: calculatePay()
-Employee: reportHours()
-Employee: save()
-
-class HourReporter
-HourReporter: reportHours()
-
-class EmployeeSaver
-EmployeeSaver: save()
-
-Employee --> HourReporter
-Employee --> EmployeeSaver
-```
+<img width="429" alt="CleanShot 2023-03-18 at 17 44 23@2x" src="https://user-images.githubusercontent.com/37217320/226095211-95bc9157-1845-4233-b72d-28ab30acc944.png">
 
 위의 방법은 모든 클래스는 반드시 단 하나의 메서드를 가져야 한다는 주장에 근거하여 반대될 수도 있지만, 현실적으로 수많은 private 메서드를 포함할 수도 있다.
 
@@ -177,13 +108,7 @@ Employee --> EmployeeSaver
 
 단일 책임의 원칙을 적용하면 아래와 같이 구성될 수 있다.
 
-```mermaid
-flowchart LR
-A[재무 데이터] --> B;
-B[재무 분석기] --> C;
-C[보고서용 재무 데이터] --> D[보고서를 웹에 표시]
-C --> E[보고서를 프린터로 출력 - 추가 요구사항]
-```
+<img width="449" alt="CleanShot 2023-03-18 at 17 44 39@2x" src="https://user-images.githubusercontent.com/37217320/226095227-9c41c56b-5ea4-4be7-92a1-81f9e7c05dba.png">
 
 이를 컴포넌트 관계로 표현해보면 아래와 같이 구성된다.
 
@@ -191,20 +116,7 @@ C --> E[보고서를 프린터로 출력 - 추가 요구사항]
 
 > 책에는 더 상세한 단위로도 표기되어 있다.
 
-```mermaid
-flowchart LR
-
-aView[Web View] --> aPresenter[Screen Presenter]
-bView[PDF View] --> bPresenter[Print Presenter]
-
-aPresenter --> Controller[Finalcial Report Controller]
-bPresenter --> Controller
-
-Controller --> Interactor[Financial Report Interactor]
-
-
-DB[Finalcial Database] --> Interactor
-```
+<img width="450" alt="CleanShot 2023-03-18 at 17 44 53@2x" src="https://user-images.githubusercontent.com/37217320/226095245-1f13c28e-b524-447e-a025-fe884c53e6e1.png">
 
 A컴포넌트에서 발생한 변경으로부터 B 컴포넌트를 보호하려면 A컴포넌트는 B 컴포넌트에 의존해야한다.
 
@@ -228,18 +140,7 @@ OCP의 목표는 시스템을 확장하기 쉬운 동시에 변경으로 인해 
 
 하위타입의 구성요소와 상위타입의 구성요소는 반드시 서로 치환이 가능해야한다.
 
-```mermaid
-classDiagram
-
-Billing --> License
-
-<<interface>> License
-License: calcFee()
-
-License <|-- PersonalLicense
-License <|-- BusinessLicense
-BusinessLicense: users
-```
+<img width="418" alt="CleanShot 2023-03-18 at 17 45 07@2x" src="https://user-images.githubusercontent.com/37217320/226095272-ca9b31f3-aeb2-492f-bbb1-a4e1a7b6a625.png">
 
 위 설계는 Billing 어플리케이션의 행위가 License 하위 타입중 무엇을 사용하는지에 전혀 의존하고 있지 않기에, 하위 타입은 모두 License로 치환할 수 있다.
 
@@ -257,47 +158,13 @@ LSP는 아키텍처 수준까지 확장할 수 있고, 반드시 확장해야만
 
 사용하지 않은 것에 의존하지 않아야 한다.
 
-```mermaid
-classDiagram
-
-class OPS
-OPS: +op1 +op2 + op3
-
-User1 --> OPS
-User2 --> OPS
-User3 --> OPS
-```
+<img width="432" alt="CleanShot 2023-03-18 at 17 45 21@2x" src="https://user-images.githubusercontent.com/37217320/226095284-a291bf75-c171-486e-8e33-ea47f756d728.png">
 
 User1 은 op1만, User2는 op2만, User3은 op3만 사용한다고 가정해보자. 만일 op1이 수정된다면, User2와 User3은 op1을 전혀 사용하지 않음에도 op1이 변경되면 User2와 3도 재 컴파일 후 새로 배포한다.
 
 이를 아래와 같은 인터페이스를 분리하여 개선해볼 수 있다.
 
-```mermaid
-classDiagram
-
-class OPS
-OPS: +op1 +op2 + op3
-
-class U1Ops
-<<Interface>> U1Ops
-U1Ops: +op1
-
-class U2Ops
-<<Interface>> U2Ops
-U2Ops: +op2
-
-class U3Ops
-<<Interface>> U3Ops
-U3Ops: +op3
-
-User1 --> U1Ops
-User2 --> U2Ops
-User3 --> U3Ops
-
-U1Ops <|-- OPS
-U2Ops <|-- OPS
-U3Ops <|-- OPS
-```
+<img width="447" alt="CleanShot 2023-03-18 at 17 45 34@2x" src="https://user-images.githubusercontent.com/37217320/226095298-5d929689-8856-4b91-bc46-51f7dbe7da45.png">
 
 ISP는 언어 타입에 의존한다고도 볼 수 있다.
 
@@ -335,30 +202,7 @@ ISP는 언어 타입에 의존한다고도 볼 수 있다.
 
 추상 팩토리는 객체를 생성할때 발생하는 소스코드 의존성을 주로 처리하고자 사용한다.
 
-```mermaid
-classDiagram
-
-class ServiceFactory
-<<Interface>> ServiceFactory
-ServiceFactory: +makeSvc
-
-class ServiceFactoryImpl
-ServiceFactoryImpl: +makeSvc
-
-class Service
-<<Interface>> Service
-
-Application --> Service
-Service <|-- ConcreateImpl
-
-Application --> ServiceFactory
-ServiceFactory <|-- ServiceFactoryImpl
-
-
-
-ConcreateImpl <-- ServiceFactoryImpl
-
-```
+![CleanShot 2023-03-18 at 17 46 02@2x](https://user-images.githubusercontent.com/37217320/226095332-30abdd67-ab0a-48ff-a8b8-1eedfd7c690e.png)
 
 위 표를 보면 Interface와 구현체 사이에 아키텍처 경계가 존재한다. 아키텍처 경계는 추상적인 것들과 구체적인 것들을 분리하고, 소스 코드 의존성은 모두 한방향 즉 추상적인 쪽으로 향한다.
 
