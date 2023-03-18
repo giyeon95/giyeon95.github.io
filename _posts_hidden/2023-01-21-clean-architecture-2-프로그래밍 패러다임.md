@@ -72,9 +72,7 @@ OO 언어가 있기 이전에도 다형성을 표현할 수 있는 언어가 있
 
 <img width="471" alt="CleanShot 2023-03-18 at 17 41 13@2x" src="https://user-images.githubusercontent.com/37217320/226095102-b1bfeab8-cb2b-4151-896a-fb266fa8af21.png">
 
-<의존성과 제어의 흐름을 나타내는 그래프>
-
-
+의존성과 제어의 흐름을 나타내는 그래프
 
 하지만 다형성이 끼어들면 아래와 같이 개선이 가능하다.
 

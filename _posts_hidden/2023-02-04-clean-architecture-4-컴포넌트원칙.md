@@ -61,7 +61,7 @@ categories: book
 
 REP와 CCP는 포함(inclusive) 원칙으로, 컴포넌트를 더욱 크게 만든다. 반대로 CRP는 배제(exclusive) 원칙으로 컴포넌트를 더욱 작게 만든다. 이 원칙들의 균형을 이루는 방법을 찾아야 한다.
 
-![CleanShot 2023-02-04 at 22.00.23@2x](/Users/koi/Library/Application Support/CleanShot/media/media_0vYCS2QTpG/CleanShot 2023-02-04 at 22.00.23@2x.png)
+<img width="683" alt="CleanShot 2023-03-18 at 17 55 39@2x" src="https://user-images.githubusercontent.com/37217320/226095721-09ad07c3-1971-41a3-83d2-3c1e0972ee1a.png">
 
 이미지 출처: https://icarus8050.tistory.com/46
 
@@ -110,31 +110,19 @@ REP와 CCP는 포함(inclusive) 원칙으로, 컴포넌트를 더욱 크게 만�
 - Fan-out: 바깥으로 나가는 의존성
 - I(불안정성): I = Fan-out / (Fan-in + Fan-out) 이며, I=0이면 최고로 안정된 컴포넌트를, 1이면 최고로 불안정한 컴포넌트를 의미한다.
 
-```mermaid
-flowchart TB
 
-instable1 --> stable
-instable2 --> stable
-```
 
-instanble1, instanble2 의 I= 1, stable의 I= 0
+<img width="680" alt="CleanShot 2023-03-18 at 17 53 30@2x" src="https://user-images.githubusercontent.com/37217320/226095650-ebfc3167-5c45-40f2-b811-d271eb6a46a1.png">
+
+그림 출처: https://icarus8050.tistory.com/47
 
 즉 stable이 안정성 지표로 안정적이라고 볼 수 있다.
 
 **다만 모든 컴포넌트가 안정적인 시스템이라면, 이는 변경이 불가능한 시스템을 의미한다. 즉 모든 컴포넌트가 안정적이어야 하는 것은 아니다.**
 
+![CleanShot 2023-03-18 at 17.54.25@2x](/Users/koi/Library/Application Support/CleanShot/media/media_3XhquqHHoI/CleanShot 2023-03-18 at 17.54.25@2x.png)
 
-
-
-
-```mermaid
-flowchart TB
-
-instable1 --> stable
-instable2 --> stable
-
-stable --> flexible
-```
+그림 출처: https://icarus8050.tistory.com/47
 
 
 
@@ -145,10 +133,6 @@ stable --> flexible
 
 
 <img width="640" alt="CleanShot 2023-02-17 at 15 13 39@2x" src="https://user-images.githubusercontent.com/37217320/219563911-2278b1b2-4d14-4432-b89e-cb3c8dc1bb6a.png">
-
-
-
-
 
 그림 출처: https://icarus8050.tistory.com/47
 
