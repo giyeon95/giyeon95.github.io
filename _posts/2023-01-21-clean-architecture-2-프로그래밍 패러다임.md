@@ -68,35 +68,9 @@ OO 언어가 있기 이전에도 다형성을 표현할 수 있는 언어가 있
 
 다형성을 안전하고 편리하게 적용할 수 있는 메커니즘이 등장하기 전 소프트 웨어는 main 함수가 고수준 함수를 호출하고, 고수준 함수는 중간 수준 함수를, 중간 수준 함수는 저수준 함수를 호출하였으며, 이러한 호출 트리에서 소스 코드 의존성의 방향은 반드시 제어흐름을 따랐었다. 
 
-<div class="mermaid">
-  classDiagram
-
-	Main --> HL1
-	Main --> HL2
-	Main --> HL3
-	HL1 --> ML1
-  HL1 --> ML2
-  HL1 --> ML3
-  ML1 --> LL1
-  ML1 --> LL2
-  ML2 --> LL3
-  ML2 --> LL4
-  
-  
-  Main ..> HL1
-	Main ..> HL2
-	Main ..> HL3
-	HL1 ..> ML1
-  HL1 ..> ML2
-  HL1 ..> ML3
-  ML1 ..> LL1
-  ML1 ..> LL2
-  
-  ML2 ..> LL3
-  ML2 ..> LL4  
-</div>
 
 
+<img width="471" alt="CleanShot 2023-03-18 at 17 41 13@2x" src="https://user-images.githubusercontent.com/37217320/226095102-b1bfeab8-cb2b-4151-896a-fb266fa8af21.png">
 
  <의존성과 제어의 흐름을 나타내는 그래프>
 
@@ -104,21 +78,7 @@ OO 언어가 있기 이전에도 다형성을 표현할 수 있는 언어가 있
 
 하지만 다형성이 끼어들면 아래와 같이 개선이 가능하다.
 
-```mermaid
-classDiagram
-	class I
-	<<interface>> I
-	I: +F()
-	
-	class ML1
-	ML1: +F()
-
-	HL1 --> I
-	HL1 ..> ML1
-	
-	ML1 --|> I: Implements
-
-```
+<img width="425" alt="CleanShot 2023-03-18 at 17 42 04@2x" src="https://user-images.githubusercontent.com/37217320/226095125-c21d5e52-7308-4f00-a6ac-9ad627cc8190.png">
 
 HL1모듈은 ML1 모듈의 F() 함수를 호출하나, 소스코드에서는 인터페이스를 통해 F()를 호출한다. 하지만, **ML1과 I 인터페이스 사이의 소스코드 의존성은 반대인 점을 주목하자. 이는 의존성 역전 (dependency inversion) 이라고 부른다.**
 
